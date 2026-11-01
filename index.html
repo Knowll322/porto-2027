@@ -147,6 +147,8 @@
         .atelier-photo { position: relative; background: var(--plate); border: 1px solid var(--line); border-radius: 4px; padding: 14px; box-shadow: 0 24px 60px -24px var(--shadow); }
         .atelier-photo::before { content: ''; position: absolute; inset: 7px; border: 1px solid var(--line-soft); border-radius: 2px; pointer-events: none; z-index: 2; }
         .atelier-photo img { width: 100%; height: 400px; object-fit: cover; display: block; border-radius: 2px; filter: var(--photo-filter); }
+        .atelier-photo img.ink-art { object-fit: contain; height: 380px; mix-blend-mode: multiply; filter: none; padding: 8px; }
+        body.dark .atelier-photo img.ink-art { mix-blend-mode: screen; filter: invert(1); }
         .atelier-photo figcaption { font-family: 'Dancing Script', cursive; font-size: 1.25rem; text-align: center; padding: 12px 6px 4px; color: var(--accent); }
         .atelier-text .kicker { text-align: left; }
         .atelier-text h3 { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 2.6vw, 2.3rem); font-weight: 600; line-height: 1.2; margin-bottom: 18px; }
@@ -605,7 +607,7 @@
         <section class="section" id="story" style="padding-top: 20px;">
             <div class="atelier">
                 <figure class="atelier-photo reveal">
-                    <img src="2.jpeg" alt="Momen kita">
+                    <img class="ink-art" src="atelier-story.jpg" alt="Ilustrasi tinta: fallen angel">
                     <figcaption>setiap hari, bab yang baru ✦</figcaption>
                 </figure>
                 <div class="atelier-text reveal">
