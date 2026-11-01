@@ -297,6 +297,9 @@
         .atelier-photo { --gf: 26%; }
         .polaroid { --gf: 36%; }
         .typing-container { --gf: 15%; }
+        .carousel-img-wrapper { height: 300px; background: var(--plate); }
+        .carousel-img-wrapper img { object-fit: contain; mix-blend-mode: multiply; filter: none; padding: 12px; }
+        body.dark .carousel-img-wrapper img { mix-blend-mode: screen; filter: invert(1); }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1080px) {
@@ -1220,11 +1223,11 @@
 
         /* ===== CAROUSEL 3D ===== */
         const carouselData = [
-            { src: 'https://i.pinimg.com/736x/42/0c/c8/420cc83f5bc4e72fc8f9a12f75ececda.jpg', date: '17 Mei 2022', title: 'Hari Pertama', desc: 'Awal pertemuan kita, saat dunia terasa lebih kecil dan hati mulai terbuka.' },
-            { src: 'https://i.pinimg.com/1200x/00/ae/ec/00aeec09d2f805c2220c79521ded7aa5.jpg', date: '12 Agustus 2022', title: 'Jarak Memisahkan', desc: 'Kita belajar bahwa cinta tidak selalu datang dengan pelukan, kadang hanya dengan pesan dan harapan.' },
-            { src: 'https://i.pinimg.com/736x/4c/6a/b8/4c6ab80462ae425ac9c9d6ec7e1a1770.jpg', date: '3 November 2022', title: 'Suka dan Duka', desc: 'Ada hari-hari yang berat, tapi kita tetap saling memegang ketika dunia terasa sulit.' },
-            { src: 'https://i.pinimg.com/736x/fd/0d/3e/fd0d3e5c913ec1864e925b9801b84698.jpg', date: '20 Februari 2023', title: 'Menunggu', desc: 'Jarak membuat kita lebih sabar, dan waktu mengajar kita untuk tetap bertahan.' },
-            { src: 'https://i.pinimg.com/736x/d1/a9/44/d1a944fe0be37f31b50008b1c9f516db.jpg', date: 'Hari Ini', title: 'Masih Bersama', desc: 'Meski jarak tetap ada, hati kita terus menemukan jalan untuk tetap dekat.' }
+            { src: 'carousel-pride.png', date: '17 Mei 2022', title: 'Hari Pertama', desc: 'Awal pertemuan kita, saat dunia terasa lebih kecil dan hati mulai terbuka.' },
+            { src: 'carousel-pride.png', date: '12 Agustus 2022', title: 'Jarak Memisahkan', desc: 'Kita belajar bahwa cinta tidak selalu datang dengan pelukan, kadang hanya dengan pesan dan harapan.' },
+            { src: 'carousel-pride.png', date: '3 November 2022', title: 'Suka dan Duka', desc: 'Ada hari-hari yang berat, tapi kita tetap saling memegang ketika dunia terasa sulit.' },
+            { src: 'carousel-pride.png', date: '20 Februari 2023', title: 'Menunggu', desc: 'Jarak membuat kita lebih sabar, dan waktu mengajar kita untuk tetap bertahan.' },
+            { src: 'carousel-pride.png', date: 'Hari Ini', title: 'Masih Bersama', desc: 'Meski jarak tetap ada, hati kita terus menemukan jalan untuk tetap dekat.' }
         ];
         const track = document.getElementById('carouselTrack'); let currentIdx = 0;
         function buildCarousel() { track.innerHTML = ''; carouselData.forEach((data, i) => { const item = document.createElement('div'); item.className = 'carousel-item'; item.innerHTML = `<div class="carousel-img-wrapper"><img src="${data.src}" alt="Carousel ${i + 1}" loading="lazy"></div><div class="carousel-caption"><span class="date">${data.date}</span><h3>${data.title}</h3><p>${data.desc}</p></div>`; item.onclick = () => { currentIdx = i; updateCarousel(); }; track.appendChild(item); }); updateCarousel(); }
