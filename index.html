@@ -287,6 +287,17 @@
         #letters .section-watermark { right: -50px; top: 26%; width: 400px; transform: rotate(10deg); opacity: .05; }
         body.dark #letters .section-watermark { opacity: .07; }
 
+        /* ===== BINGKAI GOTHIC (ornamen sudut user) ===== */
+        .gothic-frame { --gf: 26%; }
+        .gothic-frame::before, .gothic-frame::after { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 6; background-repeat: no-repeat; }
+        .gothic-frame::before { background-image: url('frame-tl.png'), url('frame-tr.png'); background-position: left 3px top 3px, right 3px top 3px; background-size: var(--gf) auto, var(--gf) auto; }
+        .gothic-frame::after { background-image: url('frame-bl.png'), url('frame-br.png'); background-position: left 3px bottom 3px, right 3px bottom 3px; background-size: var(--gf) auto, var(--gf) auto; }
+        body.dark .gothic-frame::before, body.dark .gothic-frame::after { filter: invert(1); }
+        .video-plate .frame { --gf: 24%; }
+        .atelier-photo { --gf: 26%; }
+        .polaroid { --gf: 36%; }
+        .typing-container { --gf: 15%; }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1080px) {
             .nav-links { display: none; }
@@ -574,7 +585,7 @@
             <div class="hero-lower">
                 <div class="plate meta-plate reveal"><i class="fas fa-infinity"></i><strong>17 Mei 2022</strong><p>Where it all began.</p></div>
                 <div class="plate video-plate reveal">
-                    <div class="frame"><img class="frame-art" src="cherished-eye.jpg" alt="Ilustrasi tinta: mata tertembus pedang"><div class="frame-eye" title="Kenangan kita berputar di sini"><video src="1MP.mp4" autoplay muted loop playsinline></video></div></div>
+                    <div class="frame gothic-frame"><img class="frame-art" src="cherished-eye.jpg" alt="Ilustrasi tinta: mata tertembus pedang"><div class="frame-eye" title="Kenangan kita berputar di sini"><video src="1MP.mp4" autoplay muted loop playsinline></video></div></div>
                     <div class="cap"><h3>Cherished Moments</h3><p>Every picture tells a piece of our story.</p></div>
                 </div>
                 <div class="plate meta-plate reveal"><i class="fas fa-seedling"></i><strong>Still Growing</strong><p>Every day becomes another beautiful chapter.</p></div>
@@ -606,7 +617,7 @@
         <!-- ===== ATELIER — cerita kita ===== -->
         <section class="section" id="story" style="padding-top: 20px;">
             <div class="atelier">
-                <figure class="atelier-photo reveal">
+                <figure class="atelier-photo gothic-frame reveal">
                     <img class="ink-art" src="atelier-story.jpg" alt="Ilustrasi tinta: fallen angel">
                     <figcaption>setiap hari, bab yang baru ✦</figcaption>
                 </figure>
@@ -631,11 +642,11 @@
             <div class="divider reveal"><svg viewBox="0 0 240 24"><use href="#ornament"/></svg></div>
             <img src="https://i.pinimg.com/736x/a3/d3/1e/a3d31eadbbbfca7a0ccecc2568f0dc94.jpg" class="sticker mobile-hide" style="top: 8%; right: 5%; width: 100px; transform: rotate(10deg);" alt="Pikachu">
             <div class="scrapbook" id="scrapbook">
-                <div class="polaroid" style="top: 4%; left: 9%;" data-rotation="-8"><img src="8.jpeg" alt="Momen 1"><div class="caption">Senyum pertamamu</div></div>
-                <div class="polaroid" style="top: 14%; left: 44%;" data-rotation="5"><img src="13.jpeg" alt="Momen 2"><div class="caption">Late night drive</div></div>
-                <div class="polaroid" style="top: 40%; left: 19%;" data-rotation="10"><img src="14.jpeg" alt="Momen 3"><div class="caption">Chasing sunsets</div></div>
-                <div class="polaroid" style="top: 35%; left: 60%;" data-rotation="-5"><img src="4.jpeg" alt="Momen 4"><div class="caption">Kopi sore hari</div></div>
-                <div class="polaroid" style="top: 65%; left: 35%;" data-rotation="3"><img src="9.jpeg" alt="Momen 5"><div class="caption">Pelukan terbaikmu</div></div>
+                <div class="polaroid gothic-frame" style="top: 4%; left: 9%;" data-rotation="-8"><img src="8.jpeg" alt="Momen 1"><div class="caption">Senyum pertamamu</div></div>
+                <div class="polaroid gothic-frame" style="top: 14%; left: 44%;" data-rotation="5"><img src="13.jpeg" alt="Momen 2"><div class="caption">Late night drive</div></div>
+                <div class="polaroid gothic-frame" style="top: 40%; left: 19%;" data-rotation="10"><img src="14.jpeg" alt="Momen 3"><div class="caption">Chasing sunsets</div></div>
+                <div class="polaroid gothic-frame" style="top: 35%; left: 60%;" data-rotation="-5"><img src="4.jpeg" alt="Momen 4"><div class="caption">Kopi sore hari</div></div>
+                <div class="polaroid gothic-frame" style="top: 65%; left: 35%;" data-rotation="3"><img src="9.jpeg" alt="Momen 5"><div class="caption">Pelukan terbaikmu</div></div>
             </div>
         </section>
 
@@ -954,7 +965,7 @@
             <span class="kicker reveal">A Message</span>
             <h2 class="section-title reveal">Sebuah <em>Pesan</em></h2>
             <div class="divider reveal"><svg viewBox="0 0 240 24"><use href="#ornament"/></svg></div>
-            <div class="typing-container reveal"><span class="typing-text" id="typingText"></span><span class="cursor-blink"></span></div>
+            <div class="typing-container gothic-frame reveal"><span class="typing-text" id="typingText"></span><span class="cursor-blink"></span></div>
         </section>
 
         <!-- ===== FOOTER ===== -->
