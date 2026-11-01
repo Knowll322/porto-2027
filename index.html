@@ -275,6 +275,13 @@
 
         .reveal { opacity: 0; transform: translateY(34px); }
 
+        /* ===== WATERMARK SVG USER ===== */
+        .section-watermark { position: absolute; pointer-events: none; z-index: 0; opacity: .07; user-select: none; }
+        body.dark .section-watermark { filter: invert(1); opacity: .1; }
+        #typingSection .section-watermark { left: 50%; top: 52%; transform: translate(-50%, -50%); width: min(640px, 82%); }
+        #letters .section-watermark { right: -50px; top: 26%; width: 400px; transform: rotate(10deg); opacity: .05; }
+        body.dark #letters .section-watermark { opacity: .07; }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1080px) {
             .nav-links { display: none; }
@@ -924,6 +931,7 @@
 
         <!-- ===== LETTERS ===== -->
         <section class="section" id="letters">
+            <img class="section-watermark" src="ornament-bg.svg" alt="" aria-hidden="true">
             <span class="kicker reveal">Love Letters</span>
             <h2 class="section-title reveal">Surat <em>untukmu</em></h2>
             <div class="divider reveal"><svg viewBox="0 0 240 24"><use href="#ornament"/></svg></div>
@@ -938,6 +946,7 @@
 
         <!-- ===== TYPING MESSAGE ===== -->
         <section class="section" id="typingSection" style="padding-top: 20px;">
+            <img class="section-watermark" src="ornament-bg.svg" alt="" aria-hidden="true">
             <span class="kicker reveal">A Message</span>
             <h2 class="section-title reveal">Sebuah <em>Pesan</em></h2>
             <div class="divider reveal"><svg viewBox="0 0 240 24"><use href="#ornament"/></svg></div>
