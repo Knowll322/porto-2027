@@ -299,6 +299,19 @@
         .carousel-img-wrapper img { object-fit: contain; mix-blend-mode: multiply; filter: none; padding: 12px; }
         body.dark .carousel-img-wrapper img { mix-blend-mode: screen; filter: invert(1); }
 
+        /* ===== MOTION GRAPHIC & MINIMAL BORDER ===== */
+        .plate, .time-unit, .polaroid, .music-list-container, .music-card, .movie-card, .hobby-card, .food-card, .anime-card, .carousel-item, .carousel-btn, .theme-toggle, .nav-burger, .env-letter, .hero-panel, .marquee, .atelier-photo, .typing-container, .music-card img, .footer-bottom { border: none; }
+        .hobby-card.me { border-left: 3px solid var(--blue); }
+        .hobby-card.her { border-left: 3px solid var(--rose); }
+        .plate::before, .time-unit::before, .polaroid::before, .typing-container::before, .atelier-photo::before { display: none; }
+        .music-card.active { box-shadow: inset 0 0 0 1.5px var(--accent), 0 10px 24px -12px var(--card-shadow); }
+        @keyframes kenburns { from { transform: scale(1) translate3d(0, 0, 0); } to { transform: scale(1.09) translate3d(1.6%, -1.4%, 0); } }
+        .polaroid img, .carousel-img-wrapper img, .movie-card img, .anime-card img, .atelier-photo img.ink-art { animation: kenburns 18s ease-in-out infinite alternate; }
+        #progress-ink { position: fixed; top: 0; left: 0; height: 3px; width: 100%; background: linear-gradient(90deg, var(--accent), var(--rose)); transform-origin: 0 50%; transform: scaleX(0); z-index: 1000; pointer-events: none; }
+        .clip-reveal { clip-path: inset(10% 8% 10% 8%); }
+        .wipe { clip-path: inset(0 0 100% 0); }
+        @media (prefers-reduced-motion: reduce) { .polaroid img, .carousel-img-wrapper img, .movie-card img, .anime-card img, .atelier-photo img.ink-art { animation: none; } }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1080px) {
             .nav-links { display: none; }
@@ -380,6 +393,7 @@
 
     <audio id="audioPlayer" preload="auto"></audio>
     <canvas id="bg-canvas"></canvas>
+    <div id="progress-ink"></div>
     <div class="cursor-heart" id="cursorHeart"><i class="fas fa-heart"></i></div>
     <div class="vinyl-player" id="musicPlayer" onclick="toggleMusic()"><i class="fas fa-play" id="musicIcon"></i></div>
 
@@ -585,7 +599,7 @@
             </div>
             <div class="hero-lower">
                 <div class="plate meta-plate reveal"><i class="fas fa-infinity"></i><strong>17 Mei 2022</strong><p>Where it all began.</p></div>
-                <div class="plate video-plate reveal">
+                <div class="plate video-plate reveal clip-reveal">
                     <div class="frame"><img class="frame-art" src="cherished-eye.jpg" alt="Ilustrasi tinta: mata tertembus pedang"><div class="frame-eye" title="Kenangan kita berputar di sini"><video src="1MP.mp4" autoplay muted loop playsinline></video></div></div>
                     <div class="cap"><h3>Cherished Moments</h3><p>Every picture tells a piece of our story.</p></div>
                 </div>
@@ -618,7 +632,7 @@
         <!-- ===== ATELIER — cerita kita ===== -->
         <section class="section" id="story" style="padding-top: 20px;">
             <div class="atelier">
-                <figure class="atelier-photo gothic-frame reveal">
+                <figure class="atelier-photo gothic-frame reveal clip-reveal">
                     <img class="ink-art" src="atelier-story.jpg" alt="Ilustrasi tinta: fallen angel">
                     <figcaption>setiap hari, bab yang baru ✦</figcaption>
                 </figure>
@@ -670,7 +684,7 @@
             <h2 class="section-title reveal">Lagu <em>Favorit Kita</em></h2>
             <div class="divider reveal"><svg viewBox="0 0 240 24"><use href="#ornament"/></svg></div>
             <p class="section-note reveal" style="margin-top: 16px; opacity: .7;">Klik salah satu lagu, lalu suara akan diputar langsung di halaman.</p>
-            <div class="music-list-container reveal">
+            <div class="music-list-container reveal clip-reveal">
                 <div class="music-card" data-src="1m.mp3" onclick="playSong(this)">
                     <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=100&q=80" alt="Cover">
                     <div class="music-info">
@@ -966,7 +980,7 @@
             <span class="kicker reveal">A Message</span>
             <h2 class="section-title reveal">Sebuah <em>Pesan</em></h2>
             <div class="divider reveal"><svg viewBox="0 0 240 24"><use href="#ornament"/></svg></div>
-            <div class="typing-container gothic-frame reveal"><span class="typing-text" id="typingText"></span><span class="cursor-blink"></span></div>
+            <div class="typing-container gothic-frame reveal clip-reveal"><span class="typing-text" id="typingText"></span><span class="cursor-blink"></span></div>
         </section>
 
         <!-- ===== FOOTER ===== -->
@@ -1266,6 +1280,23 @@
         /* ===== REVEAL ON SCROLL ===== */
         gsap.utils.toArray('.reveal').forEach(el => {
             gsap.to(el, { opacity: 1, y: 0, duration: .9, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 94%' } });
+        });
+
+        /* ===== MOTION GRAPHIC & MOTION FRAMING ===== */
+        gsap.to('#progress-ink', { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: 0.3 } });
+        gsap.to('.hero-panel .scene', { yPercent: 10, ease: 'none', scrollTrigger: { trigger: '.hero-panel', start: 'top top', end: 'bottom top', scrub: true } });
+        gsap.utils.toArray('.section-watermark').forEach(el => {
+            gsap.to(el, { rotation: '+=6', yPercent: -8, ease: 'none', scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: 1 } });
+        });
+        gsap.utils.toArray('.divider').forEach(el => {
+            gsap.fromTo(el, { scaleX: 0 }, { scaleX: 1, duration: 1.1, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 92%' } });
+        });
+        gsap.utils.toArray('.section-title').forEach(el => {
+            el.classList.add('wipe');
+            gsap.to(el, { clipPath: 'inset(0 0 0% 0)', duration: 1, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 92%' } });
+        });
+        gsap.utils.toArray('.clip-reveal').forEach(el => {
+            gsap.to(el, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.2, ease: 'power2.inOut', scrollTrigger: { trigger: el, start: 'top 90%' } });
         });
     </script>
 </body>
