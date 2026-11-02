@@ -104,6 +104,10 @@
         .rope-l { left: calc(7.5% - 1px); transform: rotate(-8deg); transform-origin: top center; }
         .rope-r { right: calc(7.5% - 1px); transform: rotate(8deg); transform-origin: top center; }
         .rope::after { content: ''; position: absolute; bottom: -3px; left: -2px; width: 6px; height: 6px; border-radius: 50%; background: var(--ink); opacity: .9; }
+        .rope-img { position: absolute; top: -64px; width: 20px; height: 122px; object-fit: fill; opacity: .9; z-index: 0; }
+        .rope-img.rope-l { left: calc(7.5% - 10px); }
+        .rope-img.rope-r { right: calc(7.5% - 10px); }
+        body.dark .rope-img { filter: invert(1); }
         .rig > img:not(.rope) { position: relative; z-index: 1; }
         @media (max-width: 520px) { .rig { height: 860px; } }
         #about > * { position: relative; z-index: 1; }
@@ -311,6 +315,7 @@
         <div class="hanger" aria-hidden="true">
             <div class="rig">
                 <span class="rope rope-l"></span><span class="rope rope-r"></span>
+                <img class="rope-img rope-l" src="rope-thorn.png" alt=""><img class="rope-img rope-r" src="rope-thorn.png" alt="">
                 <img src="hanging-figure.png" alt="">
             </div>
         </div>
