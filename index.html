@@ -227,6 +227,8 @@
     <style>
         .hero-panel .scene { object-fit: cover; }
         body.dark .hero-panel .scene { filter: invert(1); }
+        .scatter { position: absolute; z-index: -1; pointer-events: none; opacity: .9; user-select: none; }
+        body.dark .scatter { opacity: .8; }
     </style>
 
     <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
@@ -716,6 +718,31 @@ void main(){
             window.__asciiRebuild = function () { build(); paint(); };
             const boot = () => { makeSource(() => { build(); paint(); }); };
             boot();
+        })();
+
+        /* ===== BUNGA SEBAR ACak ===== */
+        (function scatterBlossoms() {
+            const sheet = document.querySelector('.sheet');
+            if (!sheet) return;
+            function plant() {
+                sheet.querySelectorAll('img.scatter').forEach(el => el.remove());
+                const H = sheet.scrollHeight;
+                const N = 4;
+                for (let i = 0; i < N; i++) {
+                    const img = document.createElement('img');
+                    img.src = 'scatter-blossom.png';
+                    img.alt = '';
+                    img.className = 'scatter';
+                    const band = (i + 0.15 + Math.random() * 0.7) / N;
+                    img.style.top = Math.round(band * H) + 'px';
+                    img.style.left = (Math.random() < 0.5 ? (1 + Math.random() * 12) : (80 + Math.random() * 12)) + '%';
+                    img.style.width = Math.round(110 + Math.random() * 130) + 'px';
+                    img.style.transform = 'rotate(' + (Math.random() * 50 - 25).toFixed(1) + 'deg)';
+                    sheet.appendChild(img);
+                }
+            }
+            window.addEventListener('load', plant);
+            let rto; window.addEventListener('resize', () => { clearTimeout(rto); rto = setTimeout(plant, 400); });
         })();
 
         /* ===== REVEAL & MOTION FRAMING ===== */
