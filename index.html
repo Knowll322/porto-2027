@@ -103,9 +103,9 @@
         .rig { -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 240px), transparent 100%); mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 240px), transparent 100%); }
         body.dark .fig-top, body.dark .fig-bottom, body.dark .fig-mid { filter: invert(1); }
         .sheet > section, .sheet > footer { position: relative; z-index: 1; }
-        .rope { position: absolute; top: calc(100% - 2px); width: 7px; height: 262px; opacity: .85; z-index: 4; border-radius: 3px; background: linear-gradient(var(--ink), var(--ink)) center / 1.5px 100% no-repeat, repeating-linear-gradient(-60deg, var(--ink) 0 2px, transparent 2px 4.5px), repeating-linear-gradient(60deg, var(--ink) 0 2px, transparent 2px 4.5px); }
-        .rope-l { left: calc(50% - 164px); transform: rotate(-4deg); transform-origin: top center; }
-        .rope-r { right: calc(50% - 164px); transform: rotate(4deg); transform-origin: top center; }
+        .rope { position: absolute; top: -84px; width: 7px; height: 180px; opacity: .85; z-index: 0; border-radius: 3px; background: linear-gradient(var(--ink), var(--ink)) center / 1.5px 100% no-repeat, repeating-linear-gradient(-60deg, var(--ink) 0 2px, transparent 2px 4.5px), repeating-linear-gradient(60deg, var(--ink) 0 2px, transparent 2px 4.5px); }
+        .rope-l { left: calc(50% - 156px); transform: rotate(-4deg); transform-origin: top center; }
+        .rope-r { right: calc(50% - 156px); transform: rotate(4deg); transform-origin: top center; }
         .rig > img:not(.rope) { position: relative; z-index: 1; }
         @media (max-width: 520px) { .rig { height: 860px; } }
         #about > * { position: relative; z-index: 1; }
@@ -309,7 +309,6 @@
             <div class="hero-lower">
                 <div class="plate meta-plate reveal"><i class="fas fa-feather-pointed"></i><strong>Engraving Style</strong><p>Identitas visual: ukiran klasik, ungu &amp; krem.</p></div>
                 <div class="plate art-plate reveal clip-reveal">
-                    <span class="rope rope-l"></span><span class="rope rope-r"></span>
                     <div class="frame"><img class="frame-art" src="cherished-eye.jpg" alt="Ilustrasi tinta: mata tertembus pedang"></div>
                     <div class="cap"><h3>The Eye of Detail</h3><p>Pixel-perfect, selalu mengawasi kualitas.</p></div>
                 </div>
@@ -319,6 +318,7 @@
 
         <div class="hanger" aria-hidden="true">
             <div class="rig">
+                <span class="rope rope-l"></span><span class="rope rope-r"></span>
                 <img class="fig-top" src="fig-top.png" alt="">
                 <div class="fig-mid"></div>
                 <img class="fig-bottom" src="fig-bottom.png" alt="">
