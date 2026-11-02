@@ -228,6 +228,7 @@
         .hero-panel .scene { object-fit: cover; }
         body.dark .hero-panel .scene { filter: invert(1); }
         .scatter { position: absolute; z-index: -1; pointer-events: none; opacity: .9; user-select: none; }
+        .scatter.s-c { z-index: 2; }
         body.dark .scatter { opacity: .8; }
     </style>
 
@@ -720,29 +721,32 @@ void main(){
             boot();
         })();
 
-        /* ===== BUNGA SEBAR ACak ===== */
+        /* ===== BUNGA LYCORIS (posisi pilihan) ===== */
         (function scatterBlossoms() {
             const sheet = document.querySelector('.sheet');
             if (!sheet) return;
-            function plant() {
-                sheet.querySelectorAll('img.scatter').forEach(el => el.remove());
-                const H = sheet.scrollHeight;
-                const N = 4;
-                for (let i = 0; i < N; i++) {
-                    const img = document.createElement('img');
-                    img.src = 'scatter-blossom.png';
-                    img.alt = '';
-                    img.className = 'scatter';
-                    const band = (i + 0.15 + Math.random() * 0.7) / N;
-                    img.style.top = Math.round(band * H) + 'px';
-                    img.style.left = (Math.random() < 0.5 ? (1 + Math.random() * 12) : (80 + Math.random() * 12)) + '%';
-                    img.style.width = Math.round(110 + Math.random() * 130) + 'px';
-                    img.style.transform = 'rotate(' + (Math.random() * 50 - 25).toFixed(1) + 'deg)';
-                    sheet.appendChild(img);
+            function make(cls) { const img = document.createElement('img'); img.src = 'scatter-blossom.png'; img.alt = ''; img.className = 'scatter ' + cls; sheet.appendChild(img); return img; }
+            const A = make('s-a'), B = make('s-b'), C = make('s-c');
+            function place() {
+                const about = document.getElementById('about');
+                const footer = document.querySelector('footer');
+                const mani = document.querySelector('.manifesto-panel');
+                if (about) {
+                    A.style.top = Math.round(about.offsetTop + about.offsetHeight * 0.52) + 'px';
+                    A.style.right = '-60px'; A.style.left = 'auto'; A.style.width = '280px'; A.style.transform = 'rotate(-8deg)';
+                }
+                if (footer) {
+                    B.style.top = Math.round(footer.offsetTop - 190) + 'px';
+                    B.style.left = '46px'; B.style.right = 'auto'; B.style.width = '300px'; B.style.transform = 'rotate(7deg)';
+                }
+                if (mani) {
+                    C.style.top = Math.round(mani.offsetTop + mani.offsetHeight * 0.55) + 'px';
+                    C.style.right = '6px'; C.style.left = 'auto'; C.style.width = '210px'; C.style.transform = 'rotate(-14deg)';
                 }
             }
-            window.addEventListener('load', plant);
-            let rto; window.addEventListener('resize', () => { clearTimeout(rto); rto = setTimeout(plant, 400); });
+            window.addEventListener('load', place);
+            let rto; window.addEventListener('resize', () => { clearTimeout(rto); rto = setTimeout(place, 400); });
+            place();
         })();
 
         /* ===== REVEAL & MOTION FRAMING ===== */
