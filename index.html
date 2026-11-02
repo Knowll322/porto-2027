@@ -99,7 +99,8 @@
         .hanger { position: relative; height: 0; z-index: 0; pointer-events: none; margin-top: 72px; }
         .rig { position: absolute; top: -4px; left: 50%; transform: translateX(-50%); width: min(380px, 52vw); height: 1200px; display: flex; flex-direction: column; }
         .fig-top, .fig-bottom { width: 100%; display: block; opacity: 1; }
-        .fig-mid { flex: 1 1 auto; min-height: 40px; background: url('fig-mid.png') center / 100% 100% no-repeat; opacity: 1; }
+        .fig-bottom { opacity: .55; }
+        .fig-mid { flex: 1 1 auto; min-height: 40px; background: url('fig-mid.png') center / 100% 100% no-repeat; opacity: .38; }
         .rig { -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 240px), transparent 100%); mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 240px), transparent 100%); }
         body.dark .fig-top, body.dark .fig-bottom, body.dark .fig-mid { filter: invert(1); }
         .sheet > section, .sheet > footer { position: relative; z-index: 1; }
