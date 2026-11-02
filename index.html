@@ -227,8 +227,6 @@
     <style>
         .hero-panel .scene { object-fit: cover; }
         body.dark .hero-panel .scene { filter: invert(1); }
-        .hero-panel .cracks { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; opacity: .5; pointer-events: none; z-index: 2; }
-        body.dark .hero-panel .cracks { mix-blend-mode: screen; opacity: .45; }
     </style>
 
     <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
@@ -282,7 +280,6 @@
         <section class="hero">
             <div class="hero-panel" id="heroPanel">
                 <img class="scene" src="hero-engraving.jpg" alt="Ukiran wajah patung klasik">
-                <img class="cracks" src="cracks.png" alt="" aria-hidden="true">
                 <div class="hero-copy">
                     <span class="tagline">Web Developer · Portfolio 2027</span>
                     <h1 class="hero-title">Engraved <em>in Code</em></h1>
