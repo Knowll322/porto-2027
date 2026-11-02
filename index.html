@@ -135,21 +135,6 @@
         .chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
         .chip { font-size: .58rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; padding: 4px 10px; border-radius: 20px; background: var(--line-soft); color: var(--ink); opacity: .85; }
 
-        /* ===== PROJECTS ===== */
-        .proj-grid { max-width: 1100px; margin: 46px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-        .proj-card { text-align: left; overflow: hidden; display: flex; flex-direction: column; transition: transform .3s ease, box-shadow .3s ease; }
-        .proj-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -22px var(--shadow); }
-        .proj-thumb { position: relative; height: 210px; background: var(--plate); display: flex; align-items: center; justify-content: center; overflow: hidden; border-bottom: 1px solid var(--line-soft); }
-        .proj-thumb img { width: 88%; height: 88%; object-fit: contain; mix-blend-mode: multiply; }
-        body.dark .proj-thumb img { mix-blend-mode: screen; filter: invert(1); }
-        .proj-body { padding: 20px 20px 22px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1; }
-        .proj-body .year { font-size: .6rem; letter-spacing: .26em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
-        .proj-body h4 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 600; }
-        .proj-body p { font-size: .82rem; line-height: 1.7; opacity: .74; flex-grow: 1; }
-        .proj-links { display: flex; gap: 16px; margin-top: 4px; }
-        .proj-links a { font-size: .62rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 3px; }
-        .proj-links a:hover { color: var(--accent); }
-
         /* ===== SERVICES ===== */
         .serv-grid { max-width: 1060px; margin: 46px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
         .serv-card { padding: 30px 24px; text-align: center; transition: transform .3s ease; }
@@ -185,7 +170,6 @@
         .clip-reveal { clip-path: inset(10% 8% 10% 8%); }
         .wipe { clip-path: inset(0 0 100% 0); }
         @keyframes kenburns { from { transform: scale(1) translate3d(0, 0, 0); } to { transform: scale(1.08) translate3d(1.4%, -1.2%, 0); } }
-        .proj-thumb img { animation: kenburns 18s ease-in-out infinite alternate; }
         .gothic-frame { --gf: 26%; }
         .gothic-frame::before, .gothic-frame::after { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 6; background-repeat: no-repeat; }
         .gothic-frame::before { background-image: url('frame-tl.png'), url('frame-tr.png'); background-position: left 3px top 3px, right 3px top 3px; background-size: var(--gf) auto, var(--gf) auto; }
@@ -204,6 +188,10 @@
         .manifesto-copy p { margin-top: 14px; font-size: .85rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(242, 236, 221, .66); }
         .role-line { font-family: 'Playfair Display', serif; font-size: clamp(1.35rem, 2.6vw, 2.1rem); font-weight: 600; color: var(--ink); margin: 30px auto 4px; max-width: 660px; line-height: 1.3; }
         .role-line em { font-style: italic; color: var(--accent); }
+        .ascii-wrap { max-width: 920px; margin: 6px auto 0; }
+        #asciiReveal { display: block; width: 100%; height: 300px; cursor: crosshair; }
+        .ascii-hint { margin-top: 10px; font-size: .62rem; letter-spacing: .24em; text-transform: uppercase; color: var(--accent); opacity: .85; }
+        @media (max-width: 768px) { #asciiReveal { height: 190px; } }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1080px) {
@@ -213,7 +201,6 @@
             .hero-lower { grid-template-columns: 1fr; }
             .atelier { grid-template-columns: 1fr; gap: 34px; }
             .skill-grid { grid-template-columns: repeat(2, 1fr); }
-            .proj-grid { grid-template-columns: 1fr; max-width: 560px; }
             .serv-grid { grid-template-columns: 1fr; max-width: 560px; }
             .footer-top { grid-template-columns: 1fr 1fr; }
         }
@@ -505,42 +492,11 @@
 
         <!-- ===== PROJECTS ===== -->
         <section class="section" id="projects">
-            <span class="kicker reveal">Selected Works</span>
-            <h2 class="section-title reveal">Projects &amp; <em>Case Studies</em></h2>
-            <div class="divider reveal"><svg viewBox="0 0 240 24"><use href="#ornament"/></svg></div>
-            <p class="section-note reveal" style="margin-top: 16px;">Tiga proyek favorit — masing-masing dengan cerita, tantangan, dan detail yang diukir sengaja.</p>
-            <div class="proj-grid">
-                <article class="plate proj-card reveal clip-reveal">
-                    <div class="proj-thumb"><img src="carousel-pride.png" alt="Tipografi tinta proyek Our Infinite Story"></div>
-                    <div class="proj-body">
-                        <span class="year">2022 — sekarang</span>
-                        <h4>Our Infinite Story</h4>
-                        <p>Web kenangan interaktif untuk pasangan: playlist musik, galeri polaroid 3D, amplop surat, counter hari bersama — dibalut tema engraving ungu-krem dengan motion graphic penuh.</p>
-                        <div class="chips"><span class="chip">HTML/CSS/JS</span><span class="chip">GSAP</span><span class="chip">Audio Player</span></div>
-                        <div class="proj-links"><a href="https://lovers-six.vercel.app" target="_blank" rel="noopener">Visit</a><a href="https://github.com/Knowll322/t1" target="_blank" rel="noopener">Repo</a></div>
-                    </div>
-                </article>
-                <article class="plate proj-card reveal clip-reveal">
-                    <div class="proj-thumb"><img src="ornament-bg.svg" alt="Halo tinta proyek Fleur Éternelle"></div>
-                    <div class="proj-body">
-                        <span class="year">2026</span>
-                        <h4>Fleur Éternelle Concept</h4>
-                        <p>Landing page florist &amp; atelier bergaya ukiran klasik: hero lengkung monumental, marquee, katalog produk, dan alur keranjang belanja — konsep desain yang lahir dari satu gambar referensi.</p>
-                        <div class="chips"><span class="chip">Landing Page</span><span class="chip">Engraving UI</span><span class="chip">Cart UX</span></div>
-                        <div class="proj-links"><a href="https://chat.z.ai/s/cc962462-2b17-428b-b586-4276006b235b" target="_blank" rel="noopener">Process</a></div>
-                    </div>
-                </article>
-                <article class="plate proj-card reveal clip-reveal">
-                    <div class="proj-thumb"><img src="cherished-eye.jpg" alt="Ilustrasi mata tinta proyek porto 2027"></div>
-                    <div class="proj-body">
-                        <span class="year">2027</span>
-                        <h4>porto 2027</h4>
-                        <p>Website yang sedang Anda lihat: portofolio single-page dengan hero arch SVG hand-drawn, progress bar tinta, Ken Burns, dan sistem tema light/dark engraving.</p>
-                        <div class="chips"><span class="chip">Self-designed</span><span class="chip">SVG Scene</span><span class="chip">Motion</span></div>
-                        <div class="proj-links"><a href="#home">Back to top</a></div>
-                    </div>
-                </article>
+            <div class="ascii-wrap reveal clip-reveal">
+                <canvas id="asciiReveal" aria-label="ASCII art: Projects — Selected Works"></canvas>
+                <p class="ascii-hint">arahkan kursor untuk mengungkap tinta aslinya</p>
             </div>
+            <p class="section-note reveal" style="margin-top: 16px;">Karya terpilih diukir di atas — arahkan kursor untuk melihat tintanya hidup.</p>
         </section>
 
         <!-- ===== SERVICES ===== -->
@@ -652,6 +608,7 @@
             document.body.classList.toggle('dark');
             try { localStorage.setItem('porto-theme', document.body.classList.contains('dark') ? 'dark' : 'light'); } catch (err) {}
             applyTheme();
+            if (window.__asciiRebuild) window.__asciiRebuild();
         }
         try { if (localStorage.getItem('porto-theme') === 'dark') document.body.classList.add('dark'); } catch (err) {}
         applyTheme();
@@ -795,6 +752,126 @@ void main(){
             canvas.addEventListener('pointerleave', leave);
             new IntersectionObserver(en => { visible = en[0].isIntersecting; if (visible && !reduced && !raf) { last = performance.now(); raf = requestAnimationFrame(frame); } if (!visible && raf) { cancelAnimationFrame(raf); raf = 0; } }, { threshold: 0 }).observe(canvas);
             last = performance.now(); raf = requestAnimationFrame(frame);
+        })();
+
+        /* ===== ASCII REVEAL (port vanilla dari originkit ascii-reveal.tsx) ===== */
+        (function asciiReveal() {
+            const canvas = document.getElementById('asciiReveal');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            if (!ctx) return;
+            const RAMP = ' .:-=+*#%@';
+            const COLS = 170;
+            let src = null, off = null, cover = { dx: 0, dy: 0, dw: 0, dh: 0 };
+            let blobs = [], seeded = false, raf = 0;
+            const ptr = { x: -9999, y: -9999, inside: false };
+            const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            function makeSource() {
+                const w = 900, h = 300;
+                src = document.createElement('canvas'); src.width = w; src.height = h;
+                const c = src.getContext('2d');
+                c.fillStyle = '#fff'; c.fillRect(0, 0, w, h);
+                c.fillStyle = '#000'; c.textAlign = 'center'; c.textBaseline = 'middle';
+                c.font = '600 118px "Playfair Display", serif';
+                c.fillText('PROJECTS', w / 2, h / 2 - 14);
+                c.font = '500 24px "Montserrat", sans-serif';
+                c.fillText('S E L E C T E D   W O R K S', w / 2, h - 46);
+                c.strokeStyle = '#000'; c.lineWidth = 2.5;
+                c.beginPath(); c.arc(w / 2, h / 2 - 14, 148, Math.PI * 1.08, Math.PI * 1.92); c.stroke();
+                for (let i = 0; i < 26; i++) {
+                    const x = (i * 137.5) % w, y = (i * 61.8) % h;
+                    c.fillRect(x, y, 2, 2);
+                }
+            }
+            function ink() {
+                const dark = document.body.classList.contains('dark');
+                return dark ? '#ece4d2' : '#3a2860';
+            }
+            function build() {
+                if (!src) return;
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                const w = canvas.clientWidth || 900, h = canvas.clientHeight || 300;
+                canvas.width = Math.max(1, Math.round(w * dpr));
+                canvas.height = Math.max(1, Math.round(h * dpr));
+                const cellW = canvas.width / COLS;
+                const fontPx = cellW * 1.7, cellH = fontPx;
+                const rows = Math.max(1, Math.floor(canvas.height / cellH));
+                const sampler = document.createElement('canvas');
+                sampler.width = COLS; sampler.height = rows;
+                const sctx = sampler.getContext('2d', { willReadFrequently: true });
+                const scale = Math.max(canvas.width / src.width, canvas.height / src.height);
+                const dw = src.width * scale, dh = src.height * scale;
+                cover = { dx: (canvas.width - dw) / 2, dy: (canvas.height - dh) / 2, dw, dh };
+                sctx.clearRect(0, 0, COLS, rows);
+                sctx.drawImage(src, cover.dx / cellW, cover.dy / cellH, dw / cellW, dh / cellH);
+                let data;
+                try { data = sctx.getImageData(0, 0, COLS, rows).data; } catch (e) { return; }
+                off = document.createElement('canvas');
+                off.width = canvas.width; off.height = canvas.height;
+                const octx = off.getContext('2d');
+                octx.font = fontPx.toFixed(2) + 'px ui-monospace, monospace';
+                octx.textBaseline = 'top';
+                octx.fillStyle = ink();
+                const dark = document.body.classList.contains('dark');
+                const last = RAMP.length - 1;
+                for (let r = 0; r < rows; r++) for (let cIdx = 0; cIdx < COLS; cIdx++) {
+                    const i = (r * COLS + cIdx) * 4;
+                    let lum = (0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2]) / 255;
+                    if (dark) lum = 1 - lum;
+                    const ch = RAMP[Math.round(lum * last)];
+                    if (ch === ' ') continue;
+                    octx.fillText(ch, cIdx * cellW, r * cellH);
+                }
+            }
+            function paint() {
+                if (!off) return;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(off, 0, 0);
+                if (!ptr.inside || !src) return;
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                const photo = document.createElement('canvas');
+                photo.width = canvas.width; photo.height = canvas.height;
+                const pctx = photo.getContext('2d');
+                const mask = document.createElement('canvas');
+                mask.width = canvas.width; mask.height = canvas.height;
+                const mctx = mask.getContext('2d');
+                pctx.drawImage(src, cover.dx, cover.dy, cover.dw, cover.dh);
+                if (document.body.classList.contains('dark')) { pctx.globalCompositeOperation = 'difference'; pctx.fillStyle = '#fff'; pctx.fillRect(0, 0, photo.width, photo.height); pctx.globalCompositeOperation = 'source-over'; }
+                mctx.filter = 'blur(' + (16 * dpr).toFixed(1) + 'px)';
+                mctx.fillStyle = '#fff';
+                for (let i = 0; i < blobs.length; i++) {
+                    const t = blobs.length <= 1 ? 0 : i / (blobs.length - 1);
+                    mctx.beginPath(); mctx.arc(blobs[i].x, blobs[i].y, 80 * dpr * (1 - t * 0.5), 0, Math.PI * 2); mctx.fill();
+                }
+                pctx.globalCompositeOperation = 'destination-in';
+                pctx.drawImage(mask, 0, 0);
+                pctx.globalCompositeOperation = 'source-over';
+                ctx.drawImage(photo, 0, 0);
+            }
+            function updateBlobs() {
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
+                const tx = ptr.x * dpr, ty = ptr.y * dpr;
+                if (!seeded) { blobs.forEach(b => { b.x = tx; b.y = ty; }); seeded = true; return; }
+                blobs[0].x += (tx - blobs[0].x) * 0.35; blobs[0].y += (ty - blobs[0].y) * 0.35;
+                for (let i = 1; i < blobs.length; i++) { blobs[i].x += (blobs[i - 1].x - blobs[i].x) * 0.35; blobs[i].y += (blobs[i - 1].y - blobs[i].y) * 0.35; }
+            }
+            function loop() { updateBlobs(); paint(); if (ptr.inside && !reduced) raf = requestAnimationFrame(loop); else raf = 0; }
+            function onMove(e) {
+                const r = canvas.getBoundingClientRect();
+                ptr.x = e.clientX - r.left; ptr.y = e.clientY - r.top;
+                const was = ptr.inside;
+                ptr.inside = ptr.x >= 0 && ptr.y >= 0 && ptr.x <= r.width && ptr.y <= r.height;
+                if (ptr.inside && !was && !raf && !reduced) { blobs = Array.from({ length: 5 }, () => ({ x: ptr.x, y: ptr.y })); seeded = false; raf = requestAnimationFrame(loop); }
+                if (reduced && ptr.inside) { blobs = Array.from({ length: 5 }, () => ({ x: ptr.x, y: ptr.y })); paint(); }
+            }
+            function onLeave() { ptr.inside = false; seeded = false; paint(); }
+            canvas.addEventListener('pointermove', onMove);
+            canvas.addEventListener('pointerleave', onLeave);
+            if (typeof ResizeObserver !== 'undefined') new ResizeObserver(() => { build(); paint(); }).observe(canvas);
+            window.__asciiRebuild = function () { build(); paint(); };
+            const boot = () => { makeSource(); build(); paint(); };
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(boot); else setTimeout(boot, 300);
         })();
 
         /* ===== REVEAL & MOTION FRAMING ===== */
