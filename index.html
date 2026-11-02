@@ -130,6 +130,11 @@
         body.dark .atelier-photo img { mix-blend-mode: screen; filter: invert(1); }
         .atelier-photo figcaption { font-family: 'Dancing Script', cursive; font-size: 1.25rem; text-align: center; padding: 12px 6px 4px; color: var(--accent); }
         .atelier-text .kicker { text-align: left; }
+        .atelier-text { padding-left: 48px; }
+        @media (max-width: 1080px) { .atelier-text { padding-left: 0; } }
+        #skills .kicker, #services .kicker { text-align: left; max-width: 1060px; margin: 0 auto 14px; }
+        #skills .section-title, #services .section-title { text-align: left; max-width: 1060px; margin: 0 auto 14px; }
+        #skills .divider, #services .divider { justify-content: flex-start; max-width: 1060px; margin: 18px auto 0; }
         .atelier-text h3 { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 2.6vw, 2.3rem); font-weight: 600; line-height: 1.2; margin-bottom: 18px; }
         .atelier-text h3 em { font-style: italic; color: var(--accent); }
         .atelier-text p { font-size: .93rem; line-height: 2; opacity: .8; margin-bottom: 16px; }
