@@ -1285,7 +1285,7 @@
         /* ===== MOTION GRAPHIC & MOTION FRAMING ===== */
         gsap.to('#progress-ink', { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: 0.3 } });
         gsap.to('.hero-panel .scene', { yPercent: 10, ease: 'none', scrollTrigger: { trigger: '.hero-panel', start: 'top top', end: 'bottom top', scrub: true } });
-        gsap.utils.toArray('.section-watermark').forEach(el => {
+        gsap.utils.toArray('#letters .section-watermark').forEach(el => {
             gsap.to(el, { rotation: '+=6', yPercent: -8, ease: 'none', scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: 1 } });
         });
         gsap.utils.toArray('.divider').forEach(el => {
