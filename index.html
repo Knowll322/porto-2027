@@ -103,7 +103,7 @@
         .rig { -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 240px), transparent 100%); mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 240px), transparent 100%); }
         body.dark .fig-top, body.dark .fig-bottom, body.dark .fig-mid { filter: invert(1); }
         .sheet > section, .sheet > footer { position: relative; z-index: 1; }
-        .rope { position: absolute; top: -64px; width: 7px; height: 122px; opacity: .8; z-index: 0; border-radius: 3px; background: linear-gradient(var(--ink), var(--ink)) center / 1.5px 100% no-repeat, repeating-linear-gradient(-60deg, var(--ink) 0 2px, transparent 2px 4.5px), repeating-linear-gradient(60deg, var(--ink) 0 2px, transparent 2px 4.5px); }
+        .rope { position: absolute; top: -150px; width: 7px; height: 212px; opacity: .8; z-index: 0; border-radius: 3px; background: linear-gradient(var(--ink), var(--ink)) center / 1.5px 100% no-repeat, repeating-linear-gradient(-60deg, var(--ink) 0 2px, transparent 2px 4.5px), repeating-linear-gradient(60deg, var(--ink) 0 2px, transparent 2px 4.5px); }
         .rope-l { left: calc(7.5% - 3.5px); transform: rotate(-8deg); transform-origin: top center; }
         .rope-r { right: calc(7.5% - 3.5px); transform: rotate(8deg); transform-origin: top center; }
         .rig > img:not(.rope) { position: relative; z-index: 1; }
@@ -209,7 +209,6 @@
         .role-line em { font-style: italic; color: var(--accent); }
         .ascii-wrap { max-width: 920px; margin: 6px auto 0; }
         #asciiReveal { display: block; width: 100%; height: 300px; cursor: crosshair; }
-        .ascii-hint { margin-top: 10px; font-size: .62rem; letter-spacing: .24em; text-transform: uppercase; color: var(--accent); opacity: .85; }
         @media (max-width: 768px) { #asciiReveal { height: 190px; } }
 
         /* ===== RESPONSIVE ===== */
@@ -364,9 +363,7 @@
         <section class="section" id="projects">
             <div class="ascii-wrap reveal clip-reveal">
                 <canvas id="asciiReveal" aria-label="ASCII art: Projects — Selected Works"></canvas>
-                <p class="ascii-hint">arahkan kursor untuk mengungkap tinta aslinya</p>
             </div>
-            <p class="section-note reveal" style="margin-top: 16px;">Karya terpilih diukir di atas — arahkan kursor untuk melihat tintanya hidup.</p>
         </section>
 
         <!-- ===== SERVICES ===== -->
