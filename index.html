@@ -71,7 +71,7 @@
         .hero { padding: 34px 28px 8px; position: relative; }
         .hero-panel { position: relative; aspect-ratio: 1200 / 640; border-radius: 4px; overflow: hidden; box-shadow: 0 30px 70px -30px var(--shadow); background: var(--sky1); }
         .hero-panel .scene { position: absolute; inset: -2%; width: 104%; height: 104%; display: block; }
-        .hero-copy { position: absolute; left: 50%; top: 27%; transform: translateX(-50%); width: 30%; text-align: center; z-index: 3; }
+        .hero-copy { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(440px, 42%); text-align: center; z-index: 3; background: var(--arch-inner); padding: 30px 26px; border-radius: 4px; box-shadow: 0 24px 60px -24px var(--shadow); }
         .hero-copy .tagline { display: block; font-size: clamp(.48rem, .75vw, .64rem); letter-spacing: .34em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
         .hero-title { font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(1.25rem, 2.5vw, 2.5rem); line-height: 1.14; color: var(--ink); }
         .hero-title em { font-style: italic; }
@@ -208,7 +208,7 @@
             .sheet { margin: 10px; }
             .hero { padding: 18px 14px 4px; }
             .hero-panel { aspect-ratio: 3 / 4; }
-            .hero-copy { width: 76%; top: 24%; }
+            .hero-copy { width: 84%; padding: 24px 18px; }
             .nav { padding: 0 16px; gap: 12px; }
             .section { padding: 56px 16px; }
             .skill-grid { grid-template-columns: 1fr; max-width: 420px; }
@@ -225,24 +225,8 @@
 <body>
     <div id="progress-ink"></div>
     <style>
-        .tw { animation: tw 3.2s ease-in-out infinite; }
-        @keyframes tw { 50% { opacity: .12; } }
-        .scene .sky { fill: url(#skyGrad); }
-        .scene .moon { fill: #f2ecdd; }
-        .scene .deep { fill: var(--ink-deep); }
-        .scene .frame-dark { stroke: var(--ink-deep); }
-        .scene .rim { stroke: rgba(242, 236, 221, .42); fill: none; }
-        .scene .rim-soft { stroke: rgba(242, 236, 221, .25); fill: none; }
-        .scene .inner-fill { fill: var(--arch-inner); }
-        .scene .statue-body { fill: #1d1533; stroke: rgba(242, 236, 221, .45); stroke-width: 1.2; }
-        .scene .fold { stroke: rgba(242, 236, 221, .28); fill: none; stroke-width: 1; }
-        .scene .vine { stroke: var(--ink-deep); fill: none; stroke-width: 3; stroke-linecap: round; }
-        .scene .leaf { fill: var(--ink-deep); opacity: .92; }
-        .scene .grape { fill: #453467; stroke: rgba(242, 236, 221, .3); stroke-width: .8; }
-        .scene .temple { fill: var(--ink-deep); opacity: .85; }
-        .scene .temple-line { stroke: rgba(242, 236, 221, .35); fill: none; stroke-width: 1.2; }
-        body.dark .scene .statue-body, body.dark .scene .deep, body.dark .scene .frame-dark, body.dark .scene .vine, body.dark .scene .leaf, body.dark .scene .temple { fill: #0a0714; }
-        body.dark .scene .frame-dark, body.dark .scene .vine { stroke: #0a0714; }
+        .hero-panel .scene { object-fit: cover; }
+        body.dark .hero-panel .scene { filter: invert(1); }
     </style>
 
     <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
@@ -295,143 +279,7 @@
 
         <section class="hero">
             <div class="hero-panel" id="heroPanel">
-                <svg class="scene" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-                    <defs>
-                        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0" style="stop-color:var(--sky1)"/>
-                            <stop offset="1" style="stop-color:var(--sky2)"/>
-                        </linearGradient>
-                        <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
-                            <stop offset="0" stop-color="#f2ecdd" stop-opacity=".38"/>
-                            <stop offset="1" stop-color="#f2ecdd" stop-opacity="0"/>
-                        </radialGradient>
-                        <radialGradient id="vig" cx="50%" cy="44%" r="76%">
-                            <stop offset="55%" stop-color="#0c0817" stop-opacity="0"/>
-                            <stop offset="100%" stop-color="#0c0817" stop-opacity=".42"/>
-                        </radialGradient>
-                        <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-                            <line x1="0" y1="0" x2="0" y2="7" stroke="rgba(242,236,221,.26)" stroke-width="1.2"/>
-                        </pattern>
-                        <mask id="cresc1" maskUnits="userSpaceOnUse" x="-60" y="-60" width="120" height="120">
-                            <circle r="34" fill="#fff"/>
-                            <circle cx="13" cy="-8" r="30" fill="#000"/>
-                        </mask>
-                        <mask id="cresc2" maskUnits="userSpaceOnUse" x="-60" y="-60" width="120" height="120">
-                            <circle r="24" fill="#fff"/>
-                            <circle cx="-9" cy="6" r="21" fill="#000"/>
-                        </mask>
-                        <path id="leafShape" d="M0 0 C 6 -9 17 -9 22 0 C 17 9 6 9 0 0 Z"/>
-                        <g id="statueFigure">
-                            <rect class="deep" x="105" y="556" width="110" height="84" stroke="rgba(242,236,221,.35)" stroke-width="1"/>
-                            <rect class="deep" x="96" y="547" width="128" height="11" stroke="rgba(242,236,221,.35)" stroke-width="1"/>
-                            <rect x="133" y="578" width="54" height="30" fill="none" stroke="rgba(242,236,221,.4)" stroke-width="1"/>
-                            <line x1="141" y1="588" x2="179" y2="588" stroke="rgba(242,236,221,.3)" stroke-width="1"/>
-                            <line x1="141" y1="596" x2="171" y2="596" stroke="rgba(242,236,221,.3)" stroke-width="1"/>
-                            <circle class="statue-body" cx="160" cy="380" r="13"/>
-                            <circle class="statue-body" cx="160" cy="366" r="7"/>
-                            <path class="statue-body" d="M147 394 C 137 428, 134 470, 130 547 L 190 547 C 186 470, 183 428, 173 394 Z"/>
-                            <path class="statue-body" d="M173 402 C 191 410, 201 424, 199 440 L 190 442 C 191 428, 184 416, 170 410 Z"/>
-                            <ellipse class="statue-body" cx="201" cy="452" rx="10" ry="14"/>
-                            <rect class="statue-body" x="196" y="436" width="10" height="6"/>
-                            <path class="fold" d="M148 420 C 152 460, 150 505, 146 545"/>
-                            <path class="fold" d="M160 415 C 163 460, 162 505, 160 545"/>
-                            <path class="fold" d="M172 424 C 174 462, 175 505, 176 545"/>
-                        </g>
-                        <g id="cornerDeco">
-                            <path class="rim-soft" d="M22 66 V 22 H 66" stroke-width="1.4"/>
-                            <path class="rim-soft" d="M22 44 C 34 44, 44 34, 44 22" stroke-width="1.2"/>
-                            <circle cx="22" cy="22" r="2.6" fill="rgba(242,236,221,.5)"/>
-                        </g>
-                        <g id="gardenSide">
-                            <path class="vine" d="M292 640 C 306 588, 336 556, 372 545"/>
-                            <path class="vine" d="M330 596 C 316 566, 318 530, 330 502" stroke-width="2.4"/>
-                            <path class="vine" d="M372 545 C 356 528, 350 506, 352 486" stroke-width="2"/>
-                            <use class="leaf" href="#leafShape" transform="translate(300,610) rotate(-38) scale(1.15)"/>
-                            <use class="leaf" href="#leafShape" transform="translate(316,576) rotate(-52) scale(1)"/>
-                            <use class="leaf" href="#leafShape" transform="translate(344,552) rotate(-24) scale(.9)"/>
-                            <use class="leaf" href="#leafShape" transform="translate(324,540) rotate(-115) scale(.85)"/>
-                            <use class="leaf" href="#leafShape" transform="translate(326,512) rotate(-78) scale(.8)"/>
-                            <use class="leaf" href="#leafShape" transform="translate(352,494) rotate(-100) scale(.75)"/>
-                            <g class="grape">
-                                <circle cx="345" cy="580" r="5"/><circle cx="355" cy="583" r="5"/><circle cx="337" cy="588" r="5"/>
-                                <circle cx="349" cy="591" r="5"/><circle cx="360" cy="592" r="4.4"/><circle cx="343" cy="599" r="4.6"/>
-                                <circle cx="353" cy="600" r="4.2"/>
-                            </g>
-                            <path class="vine" d="M368 566 C 378 566, 384 574, 382 582" stroke-width="1.6"/>
-                            <g stroke="var(--ink-deep)" fill="none" stroke-width="1.8">
-                                <circle cx="384" cy="586" r="7.5"/><path d="M384 586 m -4 0 a 4 4 0 1 1 4 4"/>
-                            </g>
-                            <path class="vine" d="M250 640 C 258 622, 268 612, 284 606" stroke-width="2"/>
-                            <use class="leaf" href="#leafShape" transform="translate(258,624) rotate(-30) scale(.8)"/>
-                            <path class="vine" d="M40 640 C 90 630, 140 626, 190 628" stroke-width="1.6" opacity=".6"/>
-                        </g>
-                    </defs>
-
-                    <rect class="sky" width="1200" height="640"/>
-                    <g id="skyStars"></g>
-                    <path d="M0 566 Q 180 534 380 558 T 780 552 T 1200 560 V 640 H 0 Z" fill="var(--ink-deep)" opacity=".3"/>
-                    <circle cx="250" cy="122" r="86" fill="url(#moonGlow)"/>
-                    <g transform="translate(250,122)"><circle class="moon" r="34" mask="url(#cresc1)"/></g>
-                    <circle cx="952" cy="92" r="62" fill="url(#moonGlow)"/>
-                    <g transform="translate(952,92)"><circle class="moon" r="24" mask="url(#cresc2)"/></g>
-
-                    <use href="#statueFigure"/>
-                    <use href="#statueFigure" transform="translate(1200,0) scale(-1,1)"/>
-
-                    <path class="inner-fill" d="M410 640 V 350 A 190 190 0 0 1 790 350 V 640 Z"/>
-                    <path d="M385 640 V 350 A 215 215 0 0 1 815 350 V 640" fill="none" class="frame-dark" stroke-width="54"/>
-                    <path d="M385 640 V 350 A 215 215 0 0 1 815 350 V 640" fill="none" stroke="url(#hatch)" stroke-width="46"/>
-                    <path class="rim" d="M410 640 V 350 A 190 190 0 0 1 790 350 V 640" stroke-width="1.6"/>
-                    <path class="rim" d="M360 640 V 350 A 240 240 0 0 1 840 350 V 640" stroke-width="1.6"/>
-
-                    <g class="temple">
-                        <rect x="466" y="628" width="268" height="7"/>
-                        <rect x="478" y="619" width="244" height="9"/>
-                        <rect x="490" y="610" width="220" height="9"/>
-                        <rect x="500" y="601" width="200" height="9"/>
-                        <rect x="510" y="538" width="12" height="63"/><rect x="546" y="538" width="12" height="63"/>
-                        <rect x="582" y="538" width="12" height="63"/><rect x="606" y="538" width="12" height="63"/>
-                        <rect x="642" y="538" width="12" height="63"/><rect x="678" y="538" width="12" height="63"/>
-                        <rect x="504" y="530" width="192" height="8"/>
-                        <rect x="500" y="519" width="200" height="11"/>
-                        <path d="M492 519 L 600 476 L 708 519 Z"/>
-                    </g>
-                    <path class="temple-line" d="M510 514 L 600 482 L 690 514"/>
-                    <circle cx="600" cy="503" r="5" fill="var(--arch-inner)" opacity=".8"/>
-                    <circle cx="600" cy="470" r="3.4" fill="var(--ink-deep)" opacity=".85"/>
-                    <ellipse class="deep" cx="452" cy="586" rx="13" ry="52" opacity=".7"/>
-                    <ellipse class="deep" cx="475" cy="600" rx="10" ry="38" opacity=".6"/>
-                    <ellipse class="deep" cx="748" cy="586" rx="13" ry="52" opacity=".7"/>
-                    <ellipse class="deep" cx="725" cy="600" rx="10" ry="38" opacity=".6"/>
-                    <path d="M556 640 L 583 610 H 617 L 644 640 Z" fill="var(--ink-deep)" opacity=".22"/>
-                    <g stroke="rgba(242,236,221,.28)" stroke-width="1">
-                        <line x1="565" y1="630" x2="635" y2="630"/><line x1="574" y1="620" x2="626" y2="620"/>
-                    </g>
-
-                    <path class="deep" d="M577 104 L 623 104 L 631 152 L 569 152 Z" stroke="rgba(242,236,221,.45)" stroke-width="1.2"/>
-                    <path d="M600 115 L 610 128 L 600 141 L 590 128 Z" fill="#f2ecdd" opacity=".85"/>
-                    <g id="cherub">
-                        <circle cx="600" cy="50" r="13" fill="none" stroke="rgba(242,236,221,.55)" stroke-width="1.4"/>
-                        <use class="leaf" href="#leafShape" transform="translate(588,86) rotate(205) scale(1.7)"/>
-                        <use class="leaf" href="#leafShape" transform="translate(588,88) rotate(228) scale(1.45)"/>
-                        <use class="leaf" href="#leafShape" transform="translate(590,92) rotate(250) scale(1.2)"/>
-                        <use class="leaf" href="#leafShape" transform="translate(612,86) rotate(-25) scale(1.7)"/>
-                        <use class="leaf" href="#leafShape" transform="translate(612,88) rotate(-48) scale(1.45)"/>
-                        <use class="leaf" href="#leafShape" transform="translate(610,92) rotate(-70) scale(1.2)"/>
-                        <ellipse class="deep" cx="600" cy="88" rx="12" ry="16" stroke="rgba(242,236,221,.45)" stroke-width="1"/>
-                        <circle class="deep" cx="600" cy="67" r="9.5" stroke="rgba(242,236,221,.45)" stroke-width="1"/>
-                        <path class="deep" d="M588 84 C 578 88, 574 96, 576 102 L 582 100 C 581 95, 584 90, 590 88 Z"/>
-                        <path class="deep" d="M612 84 C 622 88, 626 96, 624 102 L 618 100 C 619 95, 616 90, 610 88 Z"/>
-                    </g>
-
-                    <use href="#gardenSide"/>
-                    <use href="#gardenSide" transform="translate(1200,0) scale(-1,1)"/>
-                    <use href="#cornerDeco"/>
-                    <use href="#cornerDeco" transform="translate(1200,0) scale(-1,1)"/>
-                    <use href="#cornerDeco" transform="translate(0,640) scale(1,-1)"/>
-                    <use href="#cornerDeco" transform="translate(1200,640) scale(-1,-1)"/>
-                    <rect width="1200" height="640" fill="url(#vig)" pointer-events="none"/>
-                </svg>
+                <img class="scene" src="hero-engraving.jpg" alt="Ukiran wajah patung klasik">
                 <div class="hero-copy">
                     <span class="tagline">Web Developer · Portfolio 2027</span>
                     <h1 class="hero-title">Engraved <em>in Code</em></h1>
