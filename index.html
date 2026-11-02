@@ -98,8 +98,9 @@
         /* ===== FIGUR BERGELANTUNGAN ===== */
         .hanger { position: relative; height: 0; z-index: 0; pointer-events: none; margin-top: 72px; }
         .rig { position: absolute; top: -4px; left: 50%; transform: translateX(-50%); width: min(380px, 52vw); height: 1200px; display: flex; flex-direction: column; }
-        .fig-top, .fig-bottom { width: 100%; display: block; opacity: .5; }
-        .fig-mid { flex: 1 1 auto; min-height: 40px; background: url('fig-mid.png') center / 100% 100% no-repeat; opacity: .5; }
+        .fig-top, .fig-bottom { width: 100%; display: block; opacity: 1; }
+        .fig-mid { flex: 1 1 auto; min-height: 40px; background: url('fig-mid.png') center / 100% 100% no-repeat; opacity: 1; }
+        .rig { -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 240px), transparent 100%); mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 240px), transparent 100%); }
         body.dark .fig-top, body.dark .fig-bottom, body.dark .fig-mid { filter: invert(1); }
         .sheet > section, .sheet > footer { position: relative; z-index: 1; }
         .rope { position: absolute; top: -64px; width: 7px; height: 122px; opacity: .8; z-index: 0; border-radius: 3px; background: linear-gradient(var(--ink), var(--ink)) center / 1.5px 100% no-repeat, repeating-linear-gradient(-60deg, var(--ink) 0 2px, transparent 2px 4.5px), repeating-linear-gradient(60deg, var(--ink) 0 2px, transparent 2px 4.5px); }
@@ -771,7 +772,7 @@ void main(){
             const hanger = document.querySelector('.hanger');
             const mani = document.querySelector('.manifesto');
             if (!rig || !hanger || !mani) return;
-            rig.style.height = Math.max(900, mani.offsetTop - hanger.offsetTop + 10) + 'px';
+            rig.style.height = Math.max(900, mani.offsetTop - hanger.offsetTop + 140) + 'px';
         }
         window.addEventListener('load', sizeRig);
         window.addEventListener('resize', sizeRig);
