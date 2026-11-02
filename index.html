@@ -103,6 +103,13 @@
         .marquee-track span i { color: rgba(201, 182, 218, .85); font-style: normal; padding-left: 22px; }
         @keyframes marquee { to { transform: translateX(-50%); } }
 
+        /* ===== FIGUR BERGELANTUNGAN DI MARQUEE ===== */
+        .hanger { position: relative; height: 0; z-index: 0; pointer-events: none; }
+        .hanger img { position: absolute; top: -4px; left: 50%; width: min(380px, 52vw); transform-origin: 50% 0; animation: sway 9s ease-in-out infinite alternate; mix-blend-mode: multiply; opacity: .95; }
+        body.dark .hanger img { mix-blend-mode: screen; filter: invert(1); }
+        @keyframes sway { from { transform: translateX(-50%) rotate(-1.7deg); } to { transform: translateX(-50%) rotate(1.7deg); } }
+        #about > * { position: relative; z-index: 1; }
+
         /* ===== SECTIONS ===== */
         .section { padding: 70px 28px; position: relative; text-align: center; }
         .kicker { display: block; font-size: .66rem; letter-spacing: .38em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
@@ -304,6 +311,8 @@
                 <span>html · css · javascript<i>✦</i></span><span>gsap &amp; scrolltrigger<i>✦</i></span><span>ui / ux engraving<i>✦</i></span><span>responsive design<i>✦</i></span><span>motion graphic<i>✦</i></span><span>storytelling<i>✦</i></span><span>git &amp; vercel<i>✦</i></span><span>porto 2027<i>✦</i></span>
             </div>
         </div>
+
+        <div class="hanger" aria-hidden="true"><img src="hanging-figure.jpg" alt=""></div>
 
         <!-- ===== ABOUT ===== -->
         <section class="section" id="about">
