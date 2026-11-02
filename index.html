@@ -97,18 +97,20 @@
 
         /* ===== FIGUR BERGELANTUNGAN ===== */
         .hanger { position: relative; height: 0; z-index: 0; pointer-events: none; margin-top: 72px; }
-        .rig { position: absolute; top: -4px; left: 50%; transform: translateX(-50%); width: min(380px, 52vw); height: 1200px; }
-        .rig img { width: 100%; height: 100%; object-fit: fill; opacity: .95; display: block; }
-        body.dark .rig img { filter: invert(1); }
+        .rig { position: absolute; top: -4px; left: 50%; transform: translateX(-50%); width: min(380px, 52vw); height: 1200px; display: flex; flex-direction: column; }
+        .fig-top, .fig-bottom { width: 100%; display: block; opacity: .5; }
+        .fig-mid { flex: 1 1 auto; min-height: 40px; background: url('fig-mid.png') center / 100% 100% no-repeat; opacity: .5; }
+        body.dark .fig-top, body.dark .fig-bottom, body.dark .fig-mid { filter: invert(1); }
+        .sheet > section, .sheet > footer { position: relative; z-index: 1; }
         .rope { position: absolute; top: -64px; width: 7px; height: 122px; opacity: .8; z-index: 0; border-radius: 3px; background: linear-gradient(var(--ink), var(--ink)) center / 1.5px 100% no-repeat, repeating-linear-gradient(-60deg, var(--ink) 0 2px, transparent 2px 4.5px), repeating-linear-gradient(60deg, var(--ink) 0 2px, transparent 2px 4.5px); }
         .rope-l { left: calc(7.5% - 3.5px); transform: rotate(-8deg); transform-origin: top center; }
         .rope-r { right: calc(7.5% - 3.5px); transform: rotate(8deg); transform-origin: top center; }
         .rig > img:not(.rope) { position: relative; z-index: 1; }
         @media (max-width: 520px) { .rig { height: 860px; } }
         #about > * { position: relative; z-index: 1; }
-        #about { padding-top: 1300px; }
-        @media (max-width: 1080px) { #about { padding-top: 1300px; } }
-        @media (max-width: 520px) { #about { padding-top: 950px; } }
+        #about { padding-top: 470px; }
+        @media (max-width: 1080px) { #about { padding-top: 470px; } }
+        @media (max-width: 520px) { #about { padding-top: 340px; } }
         @media (max-width: 1080px) { .atelier-text { margin-top: 40px; } }
 
         /* ===== SECTIONS ===== */
@@ -310,7 +312,9 @@
         <div class="hanger" aria-hidden="true">
             <div class="rig">
                 <span class="rope rope-l"></span><span class="rope rope-r"></span>
-                <img src="hanging-figure.png" alt="">
+                <img class="fig-top" src="fig-top.png" alt="">
+                <div class="fig-mid"></div>
+                <img class="fig-bottom" src="fig-bottom.png" alt="">
             </div>
         </div>
 
@@ -760,6 +764,18 @@ void main(){
             let rto; window.addEventListener('resize', () => { clearTimeout(rto); rto = setTimeout(place, 400); });
             place();
         })();
+
+        /* ===== PANJANG FIGUR SAMPAI MANIFESTO ===== */
+        function sizeRig() {
+            const rig = document.querySelector('.rig');
+            const hanger = document.querySelector('.hanger');
+            const mani = document.querySelector('.manifesto');
+            if (!rig || !hanger || !mani) return;
+            rig.style.height = Math.max(900, mani.offsetTop - hanger.offsetTop + 10) + 'px';
+        }
+        window.addEventListener('load', sizeRig);
+        window.addEventListener('resize', sizeRig);
+        sizeRig();
 
         /* ===== REVEAL & MOTION FRAMING ===== */
         gsap.utils.toArray('.reveal').forEach(el => {
