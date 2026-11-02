@@ -97,12 +97,18 @@
 
         /* ===== FIGUR BERGELANTUNGAN ===== */
         .hanger { position: relative; height: 0; z-index: 0; pointer-events: none; margin-top: 72px; }
-        .hanger img { position: absolute; top: -4px; left: 50%; width: min(380px, 52vw); height: 980px; object-fit: fill; transform: translateX(-50%); mix-blend-mode: multiply; opacity: .95; }
-        body.dark .hanger img { mix-blend-mode: screen; filter: invert(1); }
+        .rig { position: absolute; top: -4px; left: 50%; transform: translateX(-50%); width: min(380px, 52vw); height: 1200px; }
+        .rig img { width: 100%; height: 100%; object-fit: fill; opacity: .95; display: block; }
+        body.dark .rig img { filter: invert(1); }
+        .rope { position: absolute; top: -72px; width: 2px; height: calc(72px + 5%); background: var(--ink); opacity: .7; }
+        .rope-l { left: 15%; transform: rotate(3deg); transform-origin: top center; }
+        .rope-r { right: 15%; transform: rotate(-3deg); transform-origin: top center; }
+        .rope::after { content: ''; position: absolute; bottom: -3px; left: -2px; width: 6px; height: 6px; border-radius: 50%; background: var(--ink); opacity: .9; }
+        @media (max-width: 520px) { .rig { height: 860px; } }
         #about > * { position: relative; z-index: 1; }
-        #about { padding-top: 1060px; }
-        @media (max-width: 1080px) { #about { padding-top: 1060px; } }
-        @media (max-width: 520px) { #about { padding-top: 800px; } .hanger img { height: 720px; } }
+        #about { padding-top: 1300px; }
+        @media (max-width: 1080px) { #about { padding-top: 1300px; } }
+        @media (max-width: 520px) { #about { padding-top: 950px; } }
         @media (max-width: 1080px) { .atelier-text { margin-top: 40px; } }
 
         /* ===== SECTIONS ===== */
@@ -301,7 +307,12 @@
             </div>
         </section>
 
-        <div class="hanger" aria-hidden="true"><img src="hanging-figure.jpg" alt=""></div>
+        <div class="hanger" aria-hidden="true">
+            <div class="rig">
+                <span class="rope rope-l"></span><span class="rope rope-r"></span>
+                <img src="hanging-figure.png" alt="">
+            </div>
+        </div>
 
         <!-- ===== ABOUT ===== -->
         <section class="section" id="about">
