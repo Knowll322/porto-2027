@@ -95,15 +95,7 @@
         .art-plate .cap h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; margin-bottom: 4px; }
         .art-plate .cap p { font-size: .82rem; opacity: .72; line-height: 1.55; }
 
-        /* ===== MARQUEE ===== */
-        .marquee { margin-top: 26px; background: var(--ink-deep); color: #f2ecdd; overflow: hidden; padding: 13px 0; }
-        .marquee-track { display: flex; width: max-content; animation: marquee 30s linear infinite; }
-        .marquee:hover .marquee-track { animation-play-state: paused; }
-        .marquee-track span { font-size: .7rem; letter-spacing: .3em; text-transform: uppercase; white-space: nowrap; padding: 0 22px; opacity: .92; }
-        .marquee-track span i { color: rgba(201, 182, 218, .85); font-style: normal; padding-left: 22px; }
-        @keyframes marquee { to { transform: translateX(-50%); } }
-
-        /* ===== FIGUR BERGELANTUNGAN DI MARQUEE ===== */
+        /* ===== FIGUR BERGELANTUNGAN ===== */
         .hanger { position: relative; height: 0; z-index: 0; pointer-events: none; }
         .hanger img { position: absolute; top: -4px; left: 50%; width: min(380px, 52vw); transform: translateX(-50%); mix-blend-mode: multiply; opacity: .95; }
         body.dark .hanger img { mix-blend-mode: screen; filter: invert(1); }
@@ -225,8 +217,6 @@
             .typing-container { padding: 28px 22px; }
             .typing-text { font-size: 1.3rem; }
             .footer-top { grid-template-columns: 1fr; gap: 30px; }
-            .marquee-track span { font-size: .6rem; letter-spacing: .22em; padding: 0 14px; }
-            .marquee-track span i { padding-left: 14px; }
             .atelier-photo img { height: 300px; }
         }
         @media (max-width: 480px) { .hero-copy { width: 82%; } }
@@ -306,13 +296,6 @@
                 <div class="plate meta-plate reveal"><i class="fas fa-infinity"></i><strong>Since 2022</strong><p>Mengukir pengalaman web yang tak terlupakan.</p></div>
             </div>
         </section>
-
-        <div class="marquee" aria-hidden="true">
-            <div class="marquee-track">
-                <span>html · css · javascript<i>✦</i></span><span>gsap &amp; scrolltrigger<i>✦</i></span><span>ui / ux engraving<i>✦</i></span><span>responsive design<i>✦</i></span><span>motion graphic<i>✦</i></span><span>storytelling<i>✦</i></span><span>git &amp; vercel<i>✦</i></span><span>porto 2027<i>✦</i></span>
-                <span>html · css · javascript<i>✦</i></span><span>gsap &amp; scrolltrigger<i>✦</i></span><span>ui / ux engraving<i>✦</i></span><span>responsive design<i>✦</i></span><span>motion graphic<i>✦</i></span><span>storytelling<i>✦</i></span><span>git &amp; vercel<i>✦</i></span><span>porto 2027<i>✦</i></span>
-            </div>
-        </div>
 
         <div class="hanger" aria-hidden="true"><img src="hanging-figure.jpg" alt=""></div>
 
