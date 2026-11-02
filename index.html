@@ -135,36 +135,20 @@
         .chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
         .chip { font-size: .58rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; padding: 4px 10px; border-radius: 20px; background: var(--line-soft); color: var(--ink); opacity: .85; }
 
-        /* ===== PROJECTS STAGE (curved 3D case-study carousel) ===== */
-        .stage-section { background: #0c0817; padding: 64px 0 46px; position: relative; overflow: hidden; }
-        .stage-head { display: flex; justify-content: space-between; align-items: baseline; padding: 0 40px 26px; gap: 16px; flex-wrap: wrap; }
-        .stage-head .kicker { color: #b9a7d0; margin-bottom: 0; }
-        .stage-hint { font-size: .6rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(242, 236, 221, .48); }
-        .stage { perspective: 1400px; height: 540px; position: relative; }
-        .stage-track { position: absolute; inset: 0; transform-style: preserve-3d; }
-        .stage-panel { position: absolute; left: 50%; top: 50%; width: min(780px, 64vw); height: 470px; border-radius: 14px; overflow: hidden; background: #17102a; box-shadow: 0 40px 90px -30px rgba(0, 0, 0, .85); transition: transform .85s cubic-bezier(.22, .9, .24, 1), opacity .85s ease, filter .85s ease; cursor: pointer; --gf: 20%; }
-        .stage-panel.gothic-frame::before, .stage-panel.gothic-frame::after { filter: invert(1); opacity: .8; }
-        .stage-art { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
-        .stage-art img { width: 84%; height: 84%; object-fit: contain; filter: invert(1); opacity: .42; animation: kenburns 20s ease-in-out infinite alternate; }
-        .stage-copy { position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 32px 30px; background: linear-gradient(to top, rgba(12, 8, 23, .95), rgba(12, 8, 23, .55) 62%, transparent); color: #f2ecdd; text-align: left; }
-        .stage-copy .year { font-size: .6rem; letter-spacing: .26em; text-transform: uppercase; color: #b9a7d0; font-weight: 600; }
-        .stage-copy h3 { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 2.4vw, 1.9rem); font-weight: 600; margin: 8px 0 8px; }
-        .stage-copy p { font-size: .84rem; line-height: 1.7; opacity: .82; max-width: 600px; margin-bottom: 12px; }
-        .stage-copy .chips { justify-content: flex-start; margin-bottom: 12px; }
-        .stage-copy .chip { background: rgba(242, 236, 221, .12); color: #ece4d2; }
-        .stage-copy .proj-links a { color: #f2ecdd; border-bottom: 1px solid #b9a7d0; }
-        .stage-foot { display: flex; align-items: center; justify-content: center; gap: 26px; margin-top: 30px; }
+        /* ===== PROJECTS ===== */
+        .proj-grid { max-width: 1100px; margin: 46px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+        .proj-card { text-align: left; overflow: hidden; display: flex; flex-direction: column; transition: transform .3s ease, box-shadow .3s ease; }
+        .proj-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px -22px var(--shadow); }
+        .proj-thumb { position: relative; height: 210px; background: var(--plate); display: flex; align-items: center; justify-content: center; overflow: hidden; border-bottom: 1px solid var(--line-soft); }
+        .proj-thumb img { width: 88%; height: 88%; object-fit: contain; mix-blend-mode: multiply; }
+        body.dark .proj-thumb img { mix-blend-mode: screen; filter: invert(1); }
+        .proj-body { padding: 20px 20px 22px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1; }
+        .proj-body .year { font-size: .6rem; letter-spacing: .26em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+        .proj-body h4 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 600; }
+        .proj-body p { font-size: .82rem; line-height: 1.7; opacity: .74; flex-grow: 1; }
         .proj-links { display: flex; gap: 16px; margin-top: 4px; }
         .proj-links a { font-size: .62rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 3px; }
         .proj-links a:hover { color: var(--accent); }
-        .stage-btn { width: 46px; height: 46px; border-radius: 50%; background: rgba(242, 236, 221, .08); color: #f2ecdd; border: none; cursor: pointer; transition: background .3s, transform .2s; }
-        .stage-btn:hover { background: rgba(242, 236, 221, .18); transform: scale(1.06); }
-        .stage-label { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #f2ecdd; min-width: 240px; text-align: center; }
-        @media (max-width: 768px) {
-            .stage { height: 440px; }
-            .stage-panel { width: 86vw; height: 400px; }
-            .stage-head { padding: 0 20px 20px; }
-        }
 
         /* ===== SERVICES ===== */
         .serv-grid { max-width: 1060px; margin: 46px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
@@ -207,7 +191,6 @@
         .gothic-frame::before { background-image: url('frame-tl.png'), url('frame-tr.png'); background-position: left 3px top 3px, right 3px top 3px; background-size: var(--gf) auto, var(--gf) auto; }
         .gothic-frame::after { background-image: url('frame-bl.png'), url('frame-br.png'); background-position: left 3px bottom 3px, right 3px bottom 3px; background-size: var(--gf) auto, var(--gf) auto; }
         body.dark .gothic-frame::before, body.dark .gothic-frame::after { filter: invert(1); }
-        .proj-card { --gf: 30%; }
         .typing-container { --gf: 15%; }
 
         /* ===== MANIFESTO / GRAIN RING ===== */
@@ -520,50 +503,43 @@
             </div>
         </section>
 
-        <!-- ===== PROJECTS STAGE ===== -->
-        <section class="stage-section" id="projects">
-            <div class="stage-head">
-                <span class="kicker">Selected Works</span>
-                <span class="stage-hint">klik panel samping · atau panah di bawah</span>
-            </div>
-            <div class="stage">
-                <div class="stage-track" id="stageTrack">
-                    <article class="stage-panel gothic-frame" data-title="Our Infinite Story">
-                        <div class="stage-art"><img src="carousel-pride.png" alt="Tipografi tinta proyek Our Infinite Story"></div>
-                        <div class="stage-copy">
-                            <span class="year">2022 — sekarang</span>
-                            <h3>Our Infinite Story</h3>
-                            <p>Web kenangan interaktif untuk pasangan: playlist musik, galeri polaroid 3D, amplop surat, dan counter hari bersama — dibalut tema engraving ungu-krem dengan motion graphic penuh.</p>
-                            <div class="chips"><span class="chip">HTML/CSS/JS</span><span class="chip">GSAP</span><span class="chip">Audio Player</span></div>
-                            <div class="proj-links"><a href="https://lovers-six.vercel.app" target="_blank" rel="noopener">Visit</a><a href="https://github.com/Knowll322/t1" target="_blank" rel="noopener">Repo</a></div>
-                        </div>
-                    </article>
-                    <article class="stage-panel gothic-frame" data-title="Fleur Éternelle Concept">
-                        <div class="stage-art"><img src="ornament-bg.svg" alt="Halo tinta proyek Fleur Éternelle"></div>
-                        <div class="stage-copy">
-                            <span class="year">2026</span>
-                            <h3>Fleur Éternelle Concept</h3>
-                            <p>Landing page florist &amp; atelier bergaya ukiran klasik: hero lengkung monumental, marquee, katalog produk, dan alur keranjang belanja — lahir dari satu gambar referensi.</p>
-                            <div class="chips"><span class="chip">Landing Page</span><span class="chip">Engraving UI</span><span class="chip">Cart UX</span></div>
-                            <div class="proj-links"><a href="https://chat.z.ai/s/cc962462-2b17-428b-b586-4276006b235b" target="_blank" rel="noopener">Process</a></div>
-                        </div>
-                    </article>
-                    <article class="stage-panel gothic-frame" data-title="porto 2027">
-                        <div class="stage-art"><img src="cherished-eye.jpg" alt="Ilustrasi mata tinta proyek porto 2027"></div>
-                        <div class="stage-copy">
-                            <span class="year">2027</span>
-                            <h3>porto 2027</h3>
-                            <p>Website yang sedang Anda lihat: portofolio single-page dengan hero arch SVG hand-drawn, progress bar tinta, grain-ring WebGL, dan sistem tema light/dark engraving.</p>
-                            <div class="chips"><span class="chip">Self-designed</span><span class="chip">SVG Scene</span><span class="chip">WebGL</span></div>
-                            <div class="proj-links"><a href="#home">Back to top</a></div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-            <div class="stage-foot">
-                <button class="stage-btn" id="stagePrev" aria-label="Proyek sebelumnya"><i class="fas fa-chevron-left"></i></button>
-                <span class="stage-label" id="stageLabel">Our Infinite Story</span>
-                <button class="stage-btn" id="stageNext" aria-label="Proyek berikutnya"><i class="fas fa-chevron-right"></i></button>
+        <!-- ===== PROJECTS ===== -->
+        <section class="section" id="projects">
+            <span class="kicker reveal">Selected Works</span>
+            <h2 class="section-title reveal">Projects &amp; <em>Case Studies</em></h2>
+            <div class="divider reveal"><svg viewBox="0 0 240 24"><use href="#ornament"/></svg></div>
+            <p class="section-note reveal" style="margin-top: 16px;">Tiga proyek favorit — masing-masing dengan cerita, tantangan, dan detail yang diukir sengaja.</p>
+            <div class="proj-grid">
+                <article class="plate proj-card reveal clip-reveal">
+                    <div class="proj-thumb"><img src="carousel-pride.png" alt="Tipografi tinta proyek Our Infinite Story"></div>
+                    <div class="proj-body">
+                        <span class="year">2022 — sekarang</span>
+                        <h4>Our Infinite Story</h4>
+                        <p>Web kenangan interaktif untuk pasangan: playlist musik, galeri polaroid 3D, amplop surat, counter hari bersama — dibalut tema engraving ungu-krem dengan motion graphic penuh.</p>
+                        <div class="chips"><span class="chip">HTML/CSS/JS</span><span class="chip">GSAP</span><span class="chip">Audio Player</span></div>
+                        <div class="proj-links"><a href="https://lovers-six.vercel.app" target="_blank" rel="noopener">Visit</a><a href="https://github.com/Knowll322/t1" target="_blank" rel="noopener">Repo</a></div>
+                    </div>
+                </article>
+                <article class="plate proj-card reveal clip-reveal">
+                    <div class="proj-thumb"><img src="ornament-bg.svg" alt="Halo tinta proyek Fleur Éternelle"></div>
+                    <div class="proj-body">
+                        <span class="year">2026</span>
+                        <h4>Fleur Éternelle Concept</h4>
+                        <p>Landing page florist &amp; atelier bergaya ukiran klasik: hero lengkung monumental, marquee, katalog produk, dan alur keranjang belanja — konsep desain yang lahir dari satu gambar referensi.</p>
+                        <div class="chips"><span class="chip">Landing Page</span><span class="chip">Engraving UI</span><span class="chip">Cart UX</span></div>
+                        <div class="proj-links"><a href="https://chat.z.ai/s/cc962462-2b17-428b-b586-4276006b235b" target="_blank" rel="noopener">Process</a></div>
+                    </div>
+                </article>
+                <article class="plate proj-card reveal clip-reveal">
+                    <div class="proj-thumb"><img src="cherished-eye.jpg" alt="Ilustrasi mata tinta proyek porto 2027"></div>
+                    <div class="proj-body">
+                        <span class="year">2027</span>
+                        <h4>porto 2027</h4>
+                        <p>Website yang sedang Anda lihat: portofolio single-page dengan hero arch SVG hand-drawn, progress bar tinta, Ken Burns, dan sistem tema light/dark engraving.</p>
+                        <div class="chips"><span class="chip">Self-designed</span><span class="chip">SVG Scene</span><span class="chip">Motion</span></div>
+                        <div class="proj-links"><a href="#home">Back to top</a></div>
+                    </div>
+                </article>
             </div>
         </section>
 
@@ -819,43 +795,6 @@ void main(){
             canvas.addEventListener('pointerleave', leave);
             new IntersectionObserver(en => { visible = en[0].isIntersecting; if (visible && !reduced && !raf) { last = performance.now(); raf = requestAnimationFrame(frame); } if (!visible && raf) { cancelAnimationFrame(raf); raf = 0; } }, { threshold: 0 }).observe(canvas);
             last = performance.now(); raf = requestAnimationFrame(frame);
-        })();
-
-        /* ===== PROJECTS STAGE CAROUSEL ===== */
-        (function stageCarousel() {
-            const panels = Array.from(document.querySelectorAll('.stage-panel'));
-            if (!panels.length) return;
-            const label = document.getElementById('stageLabel');
-            let si = 0, timer = null;
-            function off(idx) { let o = idx - si; const n = panels.length; if (o > n / 2) o -= n; if (o < -n / 2) o += n; return o; }
-            function set(i) {
-                si = (i + panels.length) % panels.length;
-                panels.forEach((p, idx) => {
-                    const o = off(idx);
-                    if (o === 0) {
-                        p.style.transform = 'translate(-50%,-50%) rotateY(0deg) translateZ(0)';
-                        p.style.opacity = 1; p.style.zIndex = 3; p.style.filter = 'none'; p.style.cursor = 'default';
-                    } else if (Math.abs(o) === 1) {
-                        const s = o === -1 ? -1 : 1;
-                        p.style.transform = `translate(-50%,-50%) translateX(${s * 74}%) rotateY(${s * 38}deg) translateZ(-140px)`;
-                        p.style.opacity = .5; p.style.zIndex = 2; p.style.filter = 'brightness(.55)'; p.style.cursor = 'pointer';
-                    } else {
-                        p.style.transform = 'translate(-50%,-50%) translateZ(-320px)';
-                        p.style.opacity = 0; p.style.zIndex = 1;
-                    }
-                });
-                label.textContent = panels[si].dataset.title;
-            }
-            panels.forEach((p, idx) => p.addEventListener('click', () => { if (off(idx) !== 0) set(idx); }));
-            document.getElementById('stagePrev').addEventListener('click', () => set(si - 1));
-            document.getElementById('stageNext').addEventListener('click', () => set(si + 1));
-            const stageSec = document.getElementById('projects');
-            function play() { stop(); timer = setInterval(() => set(si + 1), 6500); }
-            function stop() { if (timer) { clearInterval(timer); timer = null; } }
-            stageSec.addEventListener('mouseenter', stop);
-            stageSec.addEventListener('mouseleave', play);
-            new IntersectionObserver(en => { en[0].isIntersecting ? play() : stop(); }, { threshold: .2 }).observe(stageSec);
-            set(0);
         })();
 
         /* ===== REVEAL & MOTION FRAMING ===== */
