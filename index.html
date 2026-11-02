@@ -165,8 +165,9 @@
         .contact-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 34px; }
         .section-watermark { position: absolute; pointer-events: none; z-index: 0; opacity: .07; user-select: none; }
         body.dark .section-watermark { filter: invert(1); opacity: .1; }
-        #contact { overflow: hidden; }
-        #contact .section-watermark { left: 50%; top: 52%; transform: translate(-50%, -50%); width: min(620px, 82%); }
+        #contact { display: flex; flex-direction: column; justify-content: center; }
+        @media (min-width: 769px) { #contact { min-height: 1160px; } }
+        #contact .section-watermark { left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(620px, 82%); }
 
         /* ===== FOOTER ===== */
         footer { border-top: 1px solid var(--line); padding: 64px 32px 0; text-align: left; margin-top: 30px; }
