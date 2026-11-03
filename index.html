@@ -764,7 +764,17 @@ void main(){
                     B.style.left = '46px'; B.style.right = 'auto'; B.style.width = '300px'; B.style.transform = 'rotate(7deg)';
                 }
                 if (hero) {
-                    C.style.top = Math.round(hero.offsetTop + hero.offsetHeight * 0.44) + 'px';
+                    // sejajarkan mekar bunga dengan mata ukiran; pakai offset layout (kebal transform parallax)
+                    let topY = hero.offsetTop + hero.offsetHeight * 0.31;
+                    const scene = document.querySelector('.hero-panel .scene');
+                    if (scene && scene.naturalWidth) {
+                        let base = 0, el = scene;
+                        while (el && el !== sheet) { base += el.offsetTop; el = el.offsetParent; }
+                        const scale = Math.max(scene.offsetWidth / scene.naturalWidth, scene.offsetHeight / scene.naturalHeight);
+                        const offY = (scene.naturalHeight * scale - scene.offsetHeight) / 2;
+                        topY = base + 0.648 * scene.naturalHeight * scale - offY - C.offsetHeight * 0.35;
+                    }
+                    C.style.top = Math.round(topY) + 'px';
                     C.style.right = '6px'; C.style.left = 'auto'; C.style.width = '210px'; C.style.transform = 'rotate(-14deg)';
                 }
             }
