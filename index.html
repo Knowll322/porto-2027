@@ -754,7 +754,7 @@ void main(){
             function place() {
                 const about = document.getElementById('about');
                 const footer = document.querySelector('footer');
-                const mani = document.querySelector('.manifesto-panel');
+                const hero = document.querySelector('.hero');
                 if (about) {
                     A.style.top = Math.round(about.offsetTop + about.offsetHeight * 0.52) + 'px';
                     A.style.right = '-60px'; A.style.left = 'auto'; A.style.width = '280px'; A.style.transform = 'rotate(-8deg)';
@@ -763,8 +763,8 @@ void main(){
                     B.style.top = Math.round(footer.offsetTop - 190) + 'px';
                     B.style.left = '46px'; B.style.right = 'auto'; B.style.width = '300px'; B.style.transform = 'rotate(7deg)';
                 }
-                if (mani) {
-                    C.style.top = Math.round(mani.offsetTop + mani.offsetHeight * 0.55) + 'px';
+                if (hero) {
+                    C.style.top = Math.round(hero.offsetTop + hero.offsetHeight * 0.44) + 'px';
                     C.style.right = '6px'; C.style.left = 'auto'; C.style.width = '210px'; C.style.transform = 'rotate(-14deg)';
                 }
             }
