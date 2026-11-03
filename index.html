@@ -262,6 +262,13 @@
         :root { --sq: url(#sq-0); } /* nyala default, tanpa perlu aktivasi */
         .squiggly, .hero-title, .meta-plate strong, .cap h3, .atelier-text h3, .section-title, .skill-card h4, .serv-card h4, .manifesto-copy h2 { filter: var(--sq, none); }
         .meta-plate strong { display: inline-block; }
+        /* ===== BACKSOUND TOGGLE ===== */
+        .music-toggle { position: fixed; right: 22px; bottom: 22px; z-index: 600; width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--line); background: var(--ink); color: var(--sheet); display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 12px 28px -10px var(--shadow); transition: transform .25s ease, box-shadow .25s ease; }
+        .music-toggle:hover { transform: translateY(-2px) scale(1.04); }
+        .music-toggle i { font-size: 15px; }
+        .music-toggle.playing { box-shadow: 0 0 0 6px var(--line-soft), 0 12px 28px -10px var(--shadow); }
+        .music-toggle.playing i { animation: spin-music 3.5s linear infinite; }
+        @keyframes spin-music { to { transform: rotate(360deg); } }
     </style>
 
     <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
@@ -869,6 +876,30 @@ void main(){
         gsap.utils.toArray('.clip-reveal').forEach(el => {
             gsap.to(el, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.2, ease: 'power2.inOut', scrollTrigger: { trigger: el, start: 'top 90%' } });
         });
+    </script>
+    <!-- ===== BACKSOUND ===== -->
+    <button id="musicToggle" class="music-toggle" aria-label="Putar atau matikan backsound" aria-pressed="false" title="Putar backsound">
+        <i class="fas fa-music"></i>
+    </button>
+    <audio id="backsound" src="backsound.mp3" loop preload="none"></audio>
+    <script>
+    (function backsound() {
+        const audio = document.getElementById('backsound');
+        const btn = document.getElementById('musicToggle');
+        if (!audio || !btn) return;
+        audio.volume = 0.55;
+        function setState(playing) {
+            btn.classList.toggle('playing', playing);
+            btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+            btn.title = playing ? 'Matikan backsound' : 'Putar backsound';
+        }
+        btn.addEventListener('click', function () {
+            if (audio.paused) { audio.play().catch(function () { setState(false); }); }
+            else { audio.pause(); }
+        });
+        audio.addEventListener('play', function () { setState(true); });
+        audio.addEventListener('pause', function () { setState(false); });
+    })();
     </script>
 </body>
 </html>
