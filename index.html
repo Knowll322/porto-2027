@@ -12,19 +12,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
         :root {
-            --lavender: #edc484; --sheet: #f3d9b4; --plate: #f8e7c8;
-            --ink: #231918; --ink-deep: #120d0c; --accent: #780524;
-            --rose: #96203c; --blue: #52131e; --gold: #c19a52;
-            --line: rgba(35, 25, 24, 0.24); --line-soft: rgba(35, 25, 24, 0.12);
-            --sky1: #52131e; --sky2: #780524; --arch-inner: #f8e7c8;
-            --shadow: rgba(35, 25, 24, 0.45); --card-shadow: rgba(35, 25, 24, 0.16);
+            --lavender: #d8d8d5; --sheet: #f7f7f4; --plate: #ffffff;
+            --ink: #111111; --ink-deep: #000000; --accent: #4d4d4d;
+            --rose: #6e6e6e; --blue: #3a3a3a; --gold: #8c8c8c;
+            --line: rgba(0, 0, 0, 0.22); --line-soft: rgba(0, 0, 0, 0.12);
+            --sky1: #1a1a1a; --sky2: #3d3d3d; --arch-inner: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.45); --card-shadow: rgba(0, 0, 0, 0.16);
         }
         body.dark {
-            --lavender: #16100e; --sheet: #231918; --plate: #2d211e;
-            --ink: #f3d9b4; --ink-deep: #0e0a09; --accent: #edc484;
-            --rose: #c96a7e; --blue: #d9b078; --gold: #edc484;
-            --line: rgba(243, 217, 180, 0.26); --line-soft: rgba(243, 217, 180, 0.14);
-            --sky1: #120c0b; --sky2: #2a1a1c; --arch-inner: #2d211e;
+            --lavender: #0a0a0a; --sheet: #141414; --plate: #1e1e1e;
+            --ink: #f2f2f2; --ink-deep: #000000; --accent: #bdbdbd;
+            --rose: #9a9a9a; --blue: #d0d0d0; --gold: #e0e0e0;
+            --line: rgba(255, 255, 255, 0.24); --line-soft: rgba(255, 255, 255, 0.14);
+            --sky1: #050505; --sky2: #1c1c1c; --arch-inner: #1e1e1e;
             --shadow: rgba(0, 0, 0, 0.65); --card-shadow: rgba(0, 0, 0, 0.4);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; transition: background-color .4s ease, color .4s ease, border-color .4s ease; }
@@ -32,11 +32,11 @@
         body {
             font-family: 'Montserrat', sans-serif; color: var(--ink); overflow-x: hidden;
             background-color: var(--lavender);
-            background-image: repeating-linear-gradient(45deg, rgba(35,25,24,.04) 0 1px, transparent 1px 8px),
+            background-image: repeating-linear-gradient(45deg, rgba(0,0,0,.04) 0 1px, transparent 1px 8px),
                 radial-gradient(circle at 15% 10%, rgba(255,255,255,.22), transparent 32%),
-                radial-gradient(circle at 85% 90%, rgba(82,19,30,.12), transparent 36%);
+                radial-gradient(circle at 85% 90%, rgba(0,0,0,.10), transparent 36%);
         }
-        body.dark { background-image: repeating-linear-gradient(45deg, rgba(243,217,180,.03) 0 1px, transparent 1px 8px), radial-gradient(circle at 15% 10%, rgba(237,196,132,.08), transparent 32%), radial-gradient(circle at 85% 90%, rgba(0,0,0,.35), transparent 36%); }
+        body.dark { background-image: repeating-linear-gradient(45deg, rgba(255,255,255,.03) 0 1px, transparent 1px 8px), radial-gradient(circle at 15% 10%, rgba(255,255,255,.07), transparent 32%), radial-gradient(circle at 85% 90%, rgba(0,0,0,.35), transparent 36%); }
         section { scroll-margin-top: 76px; }
         ::selection { background: var(--ink); color: var(--sheet); }
         /* Font gothic condensed ala Hermes (Rules Gothic → padanan bebas: Oswald) */
@@ -80,9 +80,9 @@
         .hero-sub { font-family: 'Dancing Script', cursive; font-size: clamp(.78rem, 1.15vw, 1.15rem); color: var(--accent); margin-top: 10px; min-height: 1.6em; line-height: 1.5; }
         .cursor-type { display: inline-block; width: 2px; height: 1em; background: var(--accent); vertical-align: middle; animation: blink 1s infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-        .hero-btn { position: absolute; left: 50%; top: calc(100% + 20px); transform: translateX(-50%); display: inline-block; background: rgba(243, 217, 180, .16); -webkit-backdrop-filter: blur(10px) saturate(1.25); backdrop-filter: blur(10px) saturate(1.25); border: 1px solid rgba(243, 217, 180, .6); color: #f3d9b4; text-shadow: 0 1px 3px rgba(12, 8, 23, .45); font-family: 'Montserrat', sans-serif; font-size: clamp(.55rem, .8vw, .7rem); font-weight: 600; letter-spacing: .2em; text-transform: uppercase; padding: 12px 26px; border-radius: 999px; cursor: pointer; box-shadow: 0 14px 34px -12px rgba(12, 8, 23, .55), inset 0 1px 0 rgba(255, 255, 255, .7), inset 0 -8px 14px rgba(255, 255, 255, .18); transition: transform .25s ease, background .3s ease; text-decoration: none; white-space: nowrap; }
-        .hero-btn:hover { transform: translateX(-50%) translateY(-2px); background: rgba(243, 217, 180, .26); }
-        body.dark .hero-btn { background: rgba(243, 217, 180, .1); border-color: rgba(243, 217, 180, .45); }
+        .hero-btn { position: absolute; left: 50%; top: calc(100% + 20px); transform: translateX(-50%); display: inline-block; background: rgba(255, 255, 255, .16); -webkit-backdrop-filter: blur(10px) saturate(1.25); backdrop-filter: blur(10px) saturate(1.25); border: 1px solid rgba(255, 255, 255, .6); color: #ffffff; text-shadow: 0 1px 3px rgba(0, 0, 0, .45); font-family: 'Montserrat', sans-serif; font-size: clamp(.55rem, .8vw, .7rem); font-weight: 600; letter-spacing: .2em; text-transform: uppercase; padding: 12px 26px; border-radius: 999px; cursor: pointer; box-shadow: 0 14px 34px -12px rgba(0, 0, 0, .55), inset 0 1px 0 rgba(255, 255, 255, .7), inset 0 -8px 14px rgba(255, 255, 255, .18); transition: transform .25s ease, background .3s ease; text-decoration: none; white-space: nowrap; }
+        .hero-btn:hover { transform: translateX(-50%) translateY(-2px); background: rgba(255, 255, 255, .26); }
+        body.dark .hero-btn { background: rgba(255, 255, 255, .1); border-color: rgba(255, 255, 255, .45); }
         .hero-lower { display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 18px; margin-top: 20px; align-items: stretch; }
         .plate { background: var(--plate); border-radius: 4px; position: relative; box-shadow: 0 12px 30px -14px var(--card-shadow); }
         .meta-plate { padding: 26px 24px; display: flex; flex-direction: column; justify-content: center; gap: 8px; text-align: center; }
@@ -106,7 +106,7 @@
         body.dark .fig-top, body.dark .fig-bottom, body.dark .fig-mid { filter: invert(1); }
         .sheet > section, .sheet > footer { position: relative; z-index: 1; }
         .rope { --rc: #000000; position: absolute; width: 7px; height: 180px; opacity: 1; z-index: 0; border-radius: 3px; background: linear-gradient(var(--rc), var(--rc)) center / 1.5px 100% no-repeat, repeating-linear-gradient(-60deg, var(--rc) 0 2px, transparent 2px 4.5px), repeating-linear-gradient(60deg, var(--rc) 0 2px, transparent 2px 4.5px); }
-        body.dark .rope { --rc: #f3d9b4; }
+        body.dark .rope { --rc: #f2f2f2; }
         .rope-l { transform: rotate(-4deg); transform-origin: top center; }
         .rope-r { transform: rotate(4deg); transform-origin: top center; }
         .rig > img:not(.rope) { position: relative; z-index: 1; }
@@ -201,13 +201,13 @@
 
         /* ===== MANIFESTO / GRAIN RING ===== */
         .manifesto { padding: 30px 28px 10px; }
-        .manifesto-panel { position: relative; border-radius: 4px; overflow: hidden; height: 440px; background: #231918; box-shadow: 0 30px 70px -30px var(--shadow); z-index: 1; }
+        .manifesto-panel { position: relative; border-radius: 4px; overflow: hidden; height: 440px; background: #111111; box-shadow: 0 30px 70px -30px var(--shadow); z-index: 1; }
         .manifesto-panel canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
         .manifesto-copy { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; pointer-events: none; }
-        .manifesto-copy .kicker { color: #edc484; }
-        .manifesto-copy h2 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(1.6rem, 3vw, 2.5rem); color: #f3d9b4; max-width: 640px; line-height: 1.25; }
-        .manifesto-copy h2 em { font-style: italic; color: #c96a7e; }
-        .manifesto-copy p { margin-top: 14px; font-size: .85rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(243, 217, 180, .66); }
+        .manifesto-copy .kicker { color: #bdbdbd; }
+        .manifesto-copy h2 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(1.6rem, 3vw, 2.5rem); color: #f2f2f2; max-width: 640px; line-height: 1.25; }
+        .manifesto-copy h2 em { font-style: italic; color: #8f8f8f; }
+        .manifesto-copy p { margin-top: 14px; font-size: .85rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(242, 242, 242, .66); }
         .role-line { font-family: 'Playfair Display', serif; font-size: clamp(1.35rem, 2.6vw, 2.1rem); font-weight: 600; color: var(--ink); margin: 30px auto 4px; max-width: 660px; line-height: 1.3; }
         .role-line em { font-style: italic; color: var(--accent); }
         .ascii-wrap { max-width: 920px; margin: 6px auto 0; }
@@ -473,7 +473,7 @@
                 c.setAttribute('cx', (Math.random() * 1200).toFixed(1));
                 c.setAttribute('cy', (Math.random() * 600).toFixed(1));
                 c.setAttribute('r', (Math.random() * 1.7 + 0.6).toFixed(2));
-                c.setAttribute('fill', '#f3d9b4');
+                c.setAttribute('fill', '#ffffff');
                 c.setAttribute('opacity', (Math.random() * 0.6 + 0.25).toFixed(2));
                 if (Math.random() < 0.35) { c.setAttribute('class', 'tw'); c.style.animationDelay = (Math.random() * 3).toFixed(2) + 's'; }
                 g.appendChild(c);
@@ -482,7 +482,7 @@
                 const x = Math.random() * 1160 + 20, y = Math.random() * 320 + 20, s = Math.random() * 4 + 4;
                 const p = document.createElementNS(NS, 'path');
                 p.setAttribute('d', `M${x} ${y - s} V${y + s} M${x - s} ${y} H${x + s}`);
-                p.setAttribute('stroke', '#f3d9b4');
+                p.setAttribute('stroke', '#ffffff');
                 p.setAttribute('stroke-width', '1.1');
                 p.setAttribute('opacity', (Math.random() * 0.4 + 0.4).toFixed(2));
                 g.appendChild(p);
@@ -544,7 +544,7 @@
             const canvas = document.getElementById('grainRing');
             if (!canvas) return;
             const gl = canvas.getContext('webgl', { antialias: false, alpha: false, depth: false });
-            if (!gl) { console.warn('GrainRing: WebGL unavailable'); canvas.parentElement.style.background = 'radial-gradient(circle at 50% 50%, #3a2226 0%, #231918 70%)'; return; }
+            if (!gl) { console.warn('GrainRing: WebGL unavailable'); canvas.parentElement.style.background = 'radial-gradient(circle at 50% 50%, #262626 0%, #111111 70%)'; return; }
             const VERT = 'attribute vec2 a_pos;void main(){gl_Position=vec4(a_pos,0.0,1.0);}';
             const FRAG = `
 #ifdef GL_FRAGMENT_PRECISION_HIGH
@@ -599,7 +599,7 @@ void main(){
             const locs = {}; const u = n => (n in locs) ? locs[n] : (locs[n] = gl.getUniformLocation(prog, n));
             // preset originkit + palet engraving
             const V = { speed: 500 / 50, hover: 52 / 100, radius: 25 / 100, ringWidth: 69 / 100, smear: (400 / 100) * 4.5, stir: 190 / 100, scale: 20 / 100, warp: 55 / 100 };
-            const C = { bg: [0x23 / 255, 0x19 / 255, 0x18 / 255], base: [0x52 / 255, 0x13 / 255, 0x1e / 255], accent: [0x78 / 255, 0x05 / 255, 0x24 / 255], high: [0xf3 / 255, 0xd9 / 255, 0xb4 / 255] };
+            const C = { bg: [0x11 / 255, 0x11 / 255, 0x11 / 255], base: [0x2f / 255, 0x2f / 255, 0x2f / 255], accent: [0x70 / 255, 0x70 / 255, 0x70 / 255], high: [0xf2 / 255, 0xf2 / 255, 0xf2 / 255] };
             const ptr = { x: .5, y: .5, tx: .5, ty: .5, on: 0, onTarget: 0 };
             let raf = 0, last = performance.now(), clock = 0, visible = true;
             const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -680,7 +680,7 @@ void main(){
             }
             function ink() {
                 const dark = document.body.classList.contains('dark');
-                return dark ? '#f3d9b4' : '#231918';
+                return dark ? '#f2f2f2' : '#111111';
             }
             function build() {
                 if (!src) return;
