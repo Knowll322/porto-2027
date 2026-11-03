@@ -14,7 +14,6 @@
         :root {
             --lavender: #c9b6da; --sheet: #f2ecdd; --plate: #faf6ec;
             --ink: #3a2860; --ink-deep: #241a3d; --accent: #6b5b8e;
-            --blood: #8a0f0f;
             --rose: #a25f6c; --blue: #5b6ea8; --gold: #a8842c;
             --line: rgba(58, 40, 96, 0.22); --line-soft: rgba(58, 40, 96, 0.12);
             --sky1: #332456; --sky2: #5b4783; --arch-inner: #f6f1e4;
@@ -23,7 +22,6 @@
         body.dark {
             --lavender: #131020; --sheet: #1d1730; --plate: #241c3a;
             --ink: #ece4d2; --ink-deep: #0c0817; --accent: #b9a7d0;
-            --blood: #c22b2b;
             --rose: #d9a0ab; --blue: #9fb0dd; --gold: #d4b469;
             --line: rgba(201, 182, 218, 0.26); --line-soft: rgba(201, 182, 218, 0.14);
             --sky1: #0d0918; --sky2: #1c1430; --arch-inner: #241a3d;
@@ -264,10 +262,6 @@
         :root { --sq: url(#sq-0); } /* nyala default, tanpa perlu aktivasi */
         .squiggly, .hero-title, .meta-plate strong, .cap h3, .atelier-text h3, .section-title, .skill-card h4, .serv-card h4, .manifesto-copy h2 { filter: var(--sq, none); }
         .meta-plate strong { display: inline-block; }
-        /* ===== JUDUL MERAH DARAH ===== */
-        .hero-title, .meta-plate strong, .cap h3, .atelier-text h3, .section-title, .skill-card h4, .serv-card h4 { color: var(--blood); }
-        .hero-title em, .section-title em, .atelier-text h3 em, .skill-card h4 em, .serv-card h4 em { color: inherit; }
-        .manifesto-copy h2, .manifesto-copy h2 em { color: #b02525; }
         /* ===== BACKSOUND TOGGLE ===== */
         .music-toggle { position: fixed; right: 22px; bottom: 22px; z-index: 600; width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--line); background: var(--ink); color: var(--sheet); display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 12px 28px -10px var(--shadow); transition: transform .25s ease, box-shadow .25s ease; }
         .music-toggle:hover { transform: translateY(-2px) scale(1.04); }
