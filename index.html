@@ -103,9 +103,10 @@
         .rig { -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 240px), transparent 100%); mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 240px), transparent 100%); }
         body.dark .fig-top, body.dark .fig-bottom, body.dark .fig-mid { filter: invert(1); }
         .sheet > section, .sheet > footer { position: relative; z-index: 1; }
-        .rope { position: absolute; top: -84px; width: 7px; height: 180px; opacity: .85; z-index: 0; border-radius: 3px; background: linear-gradient(var(--ink), var(--ink)) center / 1.5px 100% no-repeat, repeating-linear-gradient(-60deg, var(--ink) 0 2px, transparent 2px 4.5px), repeating-linear-gradient(60deg, var(--ink) 0 2px, transparent 2px 4.5px); }
-        .rope-l { left: calc(50% - 156px); transform: rotate(-4deg); transform-origin: top center; }
-        .rope-r { right: calc(50% - 156px); transform: rotate(4deg); transform-origin: top center; }
+        .rope { --rc: #000000; position: absolute; width: 7px; height: 180px; opacity: 1; z-index: 0; border-radius: 3px; background: linear-gradient(var(--rc), var(--rc)) center / 1.5px 100% no-repeat, repeating-linear-gradient(-60deg, var(--rc) 0 2px, transparent 2px 4.5px), repeating-linear-gradient(60deg, var(--rc) 0 2px, transparent 2px 4.5px); }
+        body.dark .rope { --rc: #ece4d2; }
+        .rope-l { transform: rotate(-4deg); transform-origin: top center; }
+        .rope-r { transform: rotate(4deg); transform-origin: top center; }
         .rig > img:not(.rope) { position: relative; z-index: 1; }
         @media (max-width: 520px) { .rig { height: 860px; } }
         #about > * { position: relative; z-index: 1; }
@@ -267,6 +268,7 @@
     </svg>
 
     <div class="sheet" id="home">
+        <span class="rope rope-l"></span><span class="rope rope-r"></span>
         <header class="nav">
             <a class="nav-brand" href="#home" aria-label="porto 2027 — beranda">
                 <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
@@ -318,7 +320,6 @@
 
         <div class="hanger" aria-hidden="true">
             <div class="rig">
-                <span class="rope rope-l"></span><span class="rope rope-r"></span>
                 <img class="fig-top" src="fig-top.png" alt="">
                 <div class="fig-mid"></div>
                 <img class="fig-bottom" src="fig-bottom.png" alt="">
@@ -781,6 +782,38 @@ void main(){
         window.addEventListener('load', sizeRig);
         window.addEventListener('resize', sizeRig);
         sizeRig();
+
+        /* ===== TALI TERUKUR: dari border plate ke genggaman tangan ===== */
+        function sizeRopes() {
+            const sheet = document.querySelector('.sheet');
+            const hero = document.querySelector('.hero');
+            const plate = document.querySelector('.art-plate');
+            const hanger = document.querySelector('.hanger');
+            const rig = document.querySelector('.rig');
+            const figTop = document.querySelector('.fig-top');
+            const ropeL = document.querySelector('.rope-l');
+            const ropeR = document.querySelector('.rope-r');
+            if (!sheet || !hero || !plate || !hanger || !rig || !figTop || !ropeL || !ropeR) return;
+            // posisi layout (offset*), tidak terpengaruh transform animasi reveal
+            const plateBottom = hero.offsetTop + plate.offsetTop + plate.offsetHeight;
+            const handY = hanger.offsetTop + rig.offsetTop + figTop.offsetTop + figTop.offsetHeight * 0.16 + 4;
+            const top = plateBottom - 3;
+            const h = Math.max(60, handY - top);
+            const cx = hanger.offsetLeft + rig.offsetLeft;
+            const dx = rig.offsetWidth * 0.38;
+            ropeL.style.top = top + 'px';
+            ropeL.style.height = h + 'px';
+            ropeL.style.left = (cx - dx - 3.5) + 'px';
+            ropeR.style.top = top + 'px';
+            ropeR.style.height = h + 'px';
+            ropeR.style.left = (cx + dx - 3.5) + 'px';
+        }
+        window.addEventListener('load', sizeRopes);
+        window.addEventListener('resize', () => { sizeRig(); sizeRopes(); });
+        if (window.ScrollTrigger) ScrollTrigger.addEventListener('refresh', sizeRopes);
+        sizeRopes();
+        // ukur ulang selama animasi reveal berjalan supaya titik tempel presisi
+        (function ropeSettle() { let n = 0; (function tick() { sizeRopes(); if (++n < 90) requestAnimationFrame(tick); })(); })();
 
         /* ===== REVEAL & MOTION FRAMING ===== */
         gsap.utils.toArray('.reveal').forEach(el => {
