@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>porto 2027 — Web Developer Portfolio</title>
-    <meta name="description" content="porto 2027 — portofolio web developer: landing page, interactive story websites, dan desain tema engraving.">
+    <title>Zen Porto — Web Developer Portfolio</title>
+    <meta name="description" content="Zen Porto — portofolio web developer: landing page, interactive story websites, dan desain tema engraving.">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%233a2860'/%3E%3Cg fill='%23f2ecdd'%3E%3Cpath d='M6 8.5C12 7.2 20 9.4 26 8.5v3.2c-6 .9-14-1.3-20 0z'/%3E%3Cpath d='M6 15.5C12 14.2 20 16.4 26 15.5v3.2c-6 .9-14-1.3-20 0z'/%3E%3Cpath d='M6 22.5C12 21.2 20 23.4 26 22.5v3.2c-6 .9-14-1.3-20 0z'/%3E%3C/g%3E%3C/svg%3E">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@600;700&family=Montserrat:wght@300;400;500;600&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -14,6 +14,7 @@
         :root {
             --lavender: #c9b6da; --sheet: #f2ecdd; --plate: #faf6ec;
             --ink: #3a2860; --ink-deep: #241a3d; --accent: #6b5b8e;
+            --blood: #8a0f0f;
             --rose: #a25f6c; --blue: #5b6ea8; --gold: #a8842c;
             --line: rgba(58, 40, 96, 0.22); --line-soft: rgba(58, 40, 96, 0.12);
             --sky1: #332456; --sky2: #5b4783; --arch-inner: #f6f1e4;
@@ -22,6 +23,7 @@
         body.dark {
             --lavender: #131020; --sheet: #1d1730; --plate: #241c3a;
             --ink: #ece4d2; --ink-deep: #0c0817; --accent: #b9a7d0;
+            --blood: #c22b2b;
             --rose: #d9a0ab; --blue: #9fb0dd; --gold: #d4b469;
             --line: rgba(201, 182, 218, 0.26); --line-soft: rgba(201, 182, 218, 0.14);
             --sky1: #0d0918; --sky2: #1c1430; --arch-inner: #241a3d;
@@ -262,6 +264,10 @@
         :root { --sq: url(#sq-0); } /* nyala default, tanpa perlu aktivasi */
         .squiggly, .hero-title, .meta-plate strong, .cap h3, .atelier-text h3, .section-title, .skill-card h4, .serv-card h4, .manifesto-copy h2 { filter: var(--sq, none); }
         .meta-plate strong { display: inline-block; }
+        /* ===== JUDUL MERAH DARAH ===== */
+        .hero-title, .meta-plate strong, .cap h3, .atelier-text h3, .section-title, .skill-card h4, .serv-card h4 { color: var(--blood); }
+        .hero-title em, .section-title em, .atelier-text h3 em, .skill-card h4 em, .serv-card h4 em { color: inherit; }
+        .manifesto-copy h2, .manifesto-copy h2 em { color: #b02525; }
         /* ===== BACKSOUND TOGGLE ===== */
         .music-toggle { position: fixed; right: 22px; bottom: 22px; z-index: 600; width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--line); background: var(--ink); color: var(--sheet); display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 12px 28px -10px var(--shadow); transition: transform .25s ease, box-shadow .25s ease; }
         .music-toggle:hover { transform: translateY(-2px) scale(1.04); }
@@ -292,14 +298,14 @@
     <div class="sheet" id="home">
         <span class="rope rope-l"></span><span class="rope rope-r"></span>
         <header class="nav">
-            <a class="nav-brand" href="#home" aria-label="porto 2027 — beranda">
+            <a class="nav-brand" href="#home" aria-label="Zen Porto — beranda">
                 <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
                     <path d="M2 3.9 C10 2.3, 22 5.5, 30 3.9 L30 8.3 C22 9.9, 10 6.7, 2 8.3 Z"/>
                     <path d="M2 10.2 C10 8.6, 22 11.8, 30 10.2 L30 14.6 C22 16.2, 10 13.0, 2 14.6 Z"/>
                     <path d="M2 16.5 C10 14.9, 22 18.1, 30 16.5 L30 20.9 C22 22.5, 10 19.3, 2 20.9 Z"/>
                     <path d="M2 22.8 C10 21.2, 22 24.4, 30 22.8 L30 27.2 C22 28.8, 10 25.6, 2 27.2 Z"/>
                 </svg>
-                <span>porto 2027</span>
+                <span>Zen Porto</span>
             </a>
             <nav class="nav-links">
                 <a href="#about">About</a>
@@ -324,7 +330,7 @@
             <div class="hero-panel" id="heroPanel">
                 <img class="scene" src="hero-engraving.jpg" alt="Ukiran wajah patung klasik">
                 <div class="hero-copy">
-                    <span class="tagline">Web Developer · Portfolio 2027</span>
+                    <span class="tagline">Web Developer · Zen Porto</span>
                     <h1 class="hero-title">Engraved <em>in Code</em></h1>
                     <p class="hero-sub"><span id="typewriter"></span></p>
                     <a class="hero-btn" id="scrollBtn" href="#projects">View Projects</a>
@@ -408,7 +414,7 @@
                 <div class="manifesto-copy">
                     <span class="kicker">Manifesto</span>
                     <h2>Leave no page <em>without a soul.</em></h2>
-                    <p>gerak · tinta · cerita — porto 2027</p>
+                    <p>gerak · tinta · cerita — Zen Porto</p>
                 </div>
             </div>
         </section>
@@ -437,7 +443,7 @@
                             <path d="M2 16.5 C10 14.9, 22 18.1, 30 16.5 L30 20.9 C22 22.5, 10 19.3, 2 20.9 Z"/>
                             <path d="M2 22.8 C10 21.2, 22 24.4, 30 22.8 L30 27.2 C22 28.8, 10 25.6, 2 27.2 Z"/>
                         </svg>
-                        <span>porto 2027</span>
+                        <span>Zen Porto</span>
                     </a>
                     <p>Portofolio web developer — mengukir pengalaman web dengan tinta, tipografi, dan motion.</p>
                 </div>
@@ -454,7 +460,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>© 2027 porto 2027</span>
+                <span>© 2027 Zen Porto</span>
                 <span>Engraved with love ✦ ungu &amp; krem</span>
             </div>
         </footer>
