@@ -800,10 +800,6 @@ void main(){
         (function squigglyText() {
             const targets = document.querySelectorAll('.hero-title, .meta-plate strong, .cap h3, .atelier-text h3, .section-title, .skill-card h4, .serv-card h4, .manifesto-copy h2');
             targets.forEach(el => el.classList.add('squiggly'));
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.documentElement.style.setProperty('--sq', 'url(#sq-0)'); // statis, tanpa goyang
-                return;
-            }
             const STEPS = 5, DUR = 60; // mode liar: ganti frame lebih cepat
             let i = 0;
             document.documentElement.style.setProperty('--sq', 'url(#sq-0)');
