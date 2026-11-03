@@ -244,11 +244,11 @@
 <body>
     <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
         <defs>
-            <filter id="sq-0" x="-15%" y="-50%" width="130%" height="200%"><feTurbulence baseFrequency="0.02" numOctaves="3" result="noise" seed="0"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="6"/></filter>
-            <filter id="sq-1" x="-15%" y="-50%" width="130%" height="200%"><feTurbulence baseFrequency="0.02" numOctaves="3" result="noise" seed="1"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="8"/></filter>
-            <filter id="sq-2" x="-15%" y="-50%" width="130%" height="200%"><feTurbulence baseFrequency="0.02" numOctaves="3" result="noise" seed="2"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="6"/></filter>
-            <filter id="sq-3" x="-15%" y="-50%" width="130%" height="200%"><feTurbulence baseFrequency="0.02" numOctaves="3" result="noise" seed="3"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="8"/></filter>
-            <filter id="sq-4" x="-15%" y="-50%" width="130%" height="200%"><feTurbulence baseFrequency="0.02" numOctaves="3" result="noise" seed="4"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="6"/></filter>
+            <filter id="sq-0" x="-15%" y="-50%" width="130%" height="200%"><feTurbulence baseFrequency="0.02" numOctaves="3" result="noise" seed="0"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="12"/></filter>
+            <filter id="sq-1" x="-15%" y="-50%" width="130%" height="200%"><feTurbulence baseFrequency="0.02" numOctaves="3" result="noise" seed="1"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="16"/></filter>
+            <filter id="sq-2" x="-15%" y="-50%" width="130%" height="200%"><feTurbulence baseFrequency="0.02" numOctaves="3" result="noise" seed="2"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="12"/></filter>
+            <filter id="sq-3" x="-15%" y="-50%" width="130%" height="200%"><feTurbulence baseFrequency="0.02" numOctaves="3" result="noise" seed="3"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="16"/></filter>
+            <filter id="sq-4" x="-15%" y="-50%" width="130%" height="200%"><feTurbulence baseFrequency="0.02" numOctaves="3" result="noise" seed="4"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="12"/></filter>
         </defs>
     </svg>
     <div id="progress-ink"></div>
@@ -259,8 +259,9 @@
         .scatter.s-c { z-index: 2; }
         body.dark .scatter { opacity: .8; }
         /* SquigglyText (port vanilla @aceternity/squiggly-text): teks bergoyang halus seperti goresan tangan */
-        .squiggly { filter: var(--sq, none); }
-        strong.squiggly { display: inline-block; }
+        :root { --sq: url(#sq-0); } /* nyala default, tanpa perlu aktivasi */
+        .squiggly, .hero-title, .meta-plate strong, .cap h3, .atelier-text h3, .section-title, .skill-card h4, .serv-card h4, .manifesto-copy h2 { filter: var(--sq, none); }
+        .meta-plate strong { display: inline-block; }
     </style>
 
     <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
@@ -803,7 +804,7 @@ void main(){
                 document.documentElement.style.setProperty('--sq', 'url(#sq-0)'); // statis, tanpa goyang
                 return;
             }
-            const STEPS = 5, DUR = 80; // sama seperti default komponen aslinya
+            const STEPS = 5, DUR = 60; // mode liar: ganti frame lebih cepat
             let i = 0;
             document.documentElement.style.setProperty('--sq', 'url(#sq-0)');
             setInterval(() => {
